@@ -1,9 +1,9 @@
 import express from 'express'
+import Router from './routes/auth.user.js'
 
-let app=express()
+const app=express()
+app.use(express.json())
 
-app.get('/',(req,res)=>{
-    res.send('<h1>Hello</h1>')
-})
+app.use('/api/auth',Router)
 
 export default app

@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 
 const database = async ()=>{
     try{
-        await mongoose.connect("mongodb+srv://anurag28singh88_db_user:ouzrA9tqpy9jfN5o@projectdb.pklm9ct.mongodb.net/")
+        await mongoose.connect("mongodb+srv://anurag28singh88_db_user:ouzrA9tqpy9jfN5o@projectdb.pklm9ct.mongodb.net/userdata")
         console.log("conected to database")
     }
     catch(error){
