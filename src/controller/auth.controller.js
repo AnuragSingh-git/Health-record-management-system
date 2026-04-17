@@ -1,11 +1,10 @@
-import user from "../model/user.model.js";
-import bycrpt from "bcrypt"
+import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import cookie from "cookie-parser"
 import user from "../model/user.model.js";
 
 
-const register= async (req,res)=>{
+export const register= async (req,res)=>{
     try{
     const {name,email,password}=req.body
 
@@ -20,47 +19,61 @@ const register= async (req,res)=>{
             message: "user already exist"
         })
     }
-    const hash=await bycrpt.hash(password,10)
+    const hash=await bcrypt.hash(password,10)
     const usercreated= await user.create({
         name:name,
         email:email,
         password:hash
     })
-    const token=jwt.sign({
+
+    const refreshtoken=jwt.sign({
+        name,
+        email
+    },"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
+        {expiresIn:"1d"}
+    )
+    const accesstokent=jwt.sign({
         name,
         email
     },"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
     {expiresIn:"1d"})
 
-    cookie("Token",token)
+    res.cookie("Refreshtoken",refreshtoken)
     
     res.status(201).json({
         message:"user created",
         user:usercreated,
-        Token:token
+        Token:accesstoken
     })}
     catch(error){
         console.log(error)
     }
 }
-const login=(req,res)=>{
+export const login=async (req,res)=>{
     const {name,email,password}=req.body
     if(!name&&!email){
         return res.status(401).json({message:"fill one of the two field"})
     }
-    const user=user.find({$or{name,email}})
+    const finduser=await user.findOne({$or: [{name},{email}]})
 
-    if(!user){
-        res.status(404).json({message:"user not found"})
+    if(!finduser){
+        return res.status(404).json({message:"user not found"})
     }
 
-    const userexist=bycrpt.compare(password,user.password)
+    const userexist=await bcrypt.compare(password,finduser.password)
     if(!userexist){
-        res.status(401).json({message:"wrong password"})
+        return res.status(401).json({message:"wrong password"})
     }
+
+    const refreshtoken=jwt.sign({name,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
+        {expiresIn:"1d"}
+    )
 
     const accesstoken=jwt.sign({name,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
-        {expiresIn:"15min"}
+        {expiresIn:"15m"}
     )
+    res.cookie("Refreshtoken",refreshtoken).json({
+        message:"user logedin",
+        accesstoken
+    })
 }
-export default register
