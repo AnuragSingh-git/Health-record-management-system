@@ -27,19 +27,22 @@ export const register= async (req,res)=>{
     })
 
     const refreshtoken=jwt.sign({
+        id:usercreated._id,
         name,
         email
     },"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
         {expiresIn:"1d"}
     )
-    const accesstokent=jwt.sign({
+    const accesstoken=jwt.sign({
+        id:usercreated._id,
         name,
         email
     },"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
     {expiresIn:"1d"})
 
     res.cookie("Refreshtoken",refreshtoken)
-    
+    res.cookie("Accesstoken",accesstoken)
+
     res.status(201).json({
         message:"user created",
         user:usercreated,
@@ -72,6 +75,8 @@ export const login=async (req,res)=>{
     const accesstoken=jwt.sign({name,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
         {expiresIn:"15m"}
     )
+    res.cookie("Accesstoken",accesstoken)
+
     res.cookie("Refreshtoken",refreshtoken).json({
         message:"user logedin",
         accesstoken

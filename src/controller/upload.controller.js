@@ -14,7 +14,7 @@ const uploadingfile=async (req,res)=>{
     })
 
 const urlsave=filemodel.create({
-    user:req.body.id,
+    user:req.user.id,
     url:file.url
 })
     res.status(200).json({
