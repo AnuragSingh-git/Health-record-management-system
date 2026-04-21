@@ -4,7 +4,7 @@ import cookie from "cookie-parser"
 import user from "../model/user.model.js";
 
 
-export const register= async (req,res)=>{
+export const registercontroller= async (req,res)=>{
     try{
     const {name,email,password}=req.body
 
@@ -52,7 +52,7 @@ export const register= async (req,res)=>{
         console.log(error)
     }
 }
-export const login=async (req,res)=>{
+export const logincontroller=async (req,res)=>{
     const {name,email,password}=req.body
     if(!name&&!email){
         return res.status(401).json({message:"fill one of the two field"})
