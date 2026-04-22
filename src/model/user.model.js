@@ -4,7 +4,12 @@ const userschema=new mongoose.Schema({
     name:String,
     email:String,
     password:String,
-    record:String
+    record:String,
+    role:{
+        type:String,
+        enum:["patient","doctor"],
+        require:true
+    }
 })
 
 const user=mongoose.model("user",userschema)
