@@ -1,5 +1,5 @@
 import app from './src/app.js'
-import database from './src/config/db.js'
+import connectodatabase from './src/config/db.js'
 
 connectodatabase()
 

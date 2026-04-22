@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const connectdatabase = async ()=>{
+const connecttodatabase = async ()=>{
     try{
         await mongoose.connect("mongodb+srv://anurag28singh88_db_user:ouzrA9tqpy9jfN5o@projectdb.pklm9ct.mongodb.net/userdata")
         console.log("conected to database")
@@ -9,4 +9,4 @@ const connectdatabase = async ()=>{
         console.log(error)
     }
 }
-export default database
+export default connecttodatabase
