@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 
 const requestschema= new mongoose.Schema({
     doctorid:{
-        type:mongoose.Schema.Types.Schema,
+        type:mongoose.Schema.Types.ObjectId,
         ref:"user"
     },
     patientid:{
-        type:mongoose.Schema.Types.Schema,
+        type:mongoose.Schema.Types.ObjectId,
         ref:"user"
     },
     status:{

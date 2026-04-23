@@ -79,6 +79,7 @@ export const logincontroller=async (req,res)=>{
 
     res.cookie("Refreshtoken",refreshtoken).json({
         message:"user logedin",
-        accesstoken
+        accesstoken,
+        refreshtoken
     })
 }
