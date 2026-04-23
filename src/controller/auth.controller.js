@@ -68,11 +68,11 @@ export const logincontroller=async (req,res)=>{
         return res.status(401).json({message:"wrong password"})
     }
 
-    const refreshtoken=jwt.sign({name,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
+    const refreshtoken=jwt.sign({id:finduser._id,name,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
         {expiresIn:"1d"}
     )
 
-    const accesstoken=jwt.sign({name,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
+    const accesstoken=jwt.sign({id:finduser._id,name,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
         {expiresIn:"15m"}
     )
     res.cookie("Accesstoken",accesstoken)

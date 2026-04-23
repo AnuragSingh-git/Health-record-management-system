@@ -1,10 +1,10 @@
 import requestmodel from "../model/request.model.js";
 import user from "../model/user.model.js";
 
-const seekrequest=(req,res)=>{
+const seekrequest=async (req,res)=>{
     const {patientid}=req.body
 
-    const checkpatient=user.find({_id:patientid})
+    const checkpatient=await user.find({_id:patientid})
 
     if(!checkpatient){
         return res.status(404).json({
@@ -12,7 +12,7 @@ const seekrequest=(req,res)=>{
         })
     }
 
-    const createrequest=requestmodel.create({
+    const createrequest=await requestmodel.create({
         patientid:patientid,
         doctorid:req.user.id
     })
