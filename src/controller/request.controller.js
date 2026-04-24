@@ -1,7 +1,7 @@
 import requestmodel from "../model/request.model.js";
 import user from "../model/user.model.js";
 
-const seekrequest=async (req,res)=>{
+export const seekrequest=async (req,res)=>{
     const {patientid}=req.body
 
     const checkpatient=await user.find({_id:patientid})
@@ -22,4 +22,21 @@ const seekrequest=async (req,res)=>{
         request:createrequest
     })
 }
-export default seekrequest
+
+export const gotrequest=async (req,res)=>{
+    const patientid=req.user.id
+
+    const requestgot=await requestmodel.find({
+        patientid
+    })
+
+    if(requestgot.length===0){
+        return res.status(404).json({
+            message:"no request found"
+        })
+    }
+    res.status(200).json({
+        message:"request found",
+        requestgot:requestgot
+    })
+}
