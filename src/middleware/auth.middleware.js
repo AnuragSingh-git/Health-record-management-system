@@ -12,7 +12,7 @@ const authmiddleware=(req,res,next)=>{
     const decoded=jwt.verify(cookie,"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I")
 
     if(!decoded){
-        req.status(401).json({
+        res.status(401).json({
             message:"invalid token"
         })
     }

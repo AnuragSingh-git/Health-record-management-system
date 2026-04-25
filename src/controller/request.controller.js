@@ -1,8 +1,25 @@
 import requestmodel from "../model/request.model.js";
 import user from "../model/user.model.js";
 
+export const checkuserexist=async (req,res)=>{
+    const usercheck=req.param.id
+
+    const checkpatient=await user.find({_id:usercheck})
+
+    if(!checkpatient){
+        return res.status(404).json({
+            message:"patient not found"
+        })
+    }
+
+    res.status(200).json({
+        patientname:checkpatient.name,
+        age:checkpatient.age
+    })
+}
+
 export const seekrequest=async (req,res)=>{
-    const {patientid}=req.body
+    const patientid=req.param.id
 
     const checkpatient=await user.find({_id:patientid})
 

@@ -9,7 +9,8 @@ const userschema=new mongoose.Schema({
         type:String,
         enum:["patient","doctor"],
         require:true
-    }
+    },
+    age:Number
 })
 
 const user=mongoose.model("user",userschema)
