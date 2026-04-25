@@ -1,3 +1,4 @@
+import filemodel from "../model/file.user.js";
 import requestmodel from "../model/request.model.js";
 import user from "../model/user.model.js";
 
@@ -15,6 +16,33 @@ export const checkuserexist=async (req,res)=>{
     res.status(200).json({
         patientname:checkpatient.name,
         age:checkpatient.age
+    })
+}
+
+export const seerecord=(req,res)=>{
+    const permission=requestmodel.find({
+        doctorid:req.user.id,
+        patientid:req.param.id
+    })
+
+    if(permission.status=="pending"||permission.status=="rejected"){
+        return res.status(403).json({
+            message:"no permission given"
+        })
+    }
+
+    const data=filemodel.findById(
+        req.param.id
+    )
+
+    if(!data){
+        res.status(404).json({
+            message:"user have no data uploaded"
+        })
+    }
+
+    res.status(200).json({
+        data:data
     })
 }
 

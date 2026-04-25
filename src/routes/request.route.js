@@ -4,9 +4,11 @@ import authmiddleware from "../middleware/auth.middleware.js"
 
 const requestrouter=express.Router()
 
-requestrouter.get("/checkuser/:id",authmiddleware,seekrequest)
+requestrouter.get("/search/:id",authmiddleware,)
 
-requestrouter.get("/send/:id",authmiddleware,seekrequest)
+requestrouter.get("/data/:id",authmiddleware,)
+
+requestrouter.post("/send/id",authmiddleware,seekrequest)
 
 requestrouter.post("/seerequest",authmiddleware,gotrequest)
 
