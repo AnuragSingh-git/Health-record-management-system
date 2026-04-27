@@ -86,13 +86,27 @@ export const gotrequest=async (req,res)=>{
     })
 }
 
-export const givepermission=(req,res)=>{
-    const request=requestmodel.find({
+export const givepermission=async (req,res)=>{
+    try{
+        const request=await requestmodel.find({
         doctorid:req.body.requestid
     })
+
+    if(!request){
+        return res.status(404).json({
+            message:"No request found"
+        })
+    }
     request.status="approved"
+    await request.save()
 
     res.status(200).json({
         message:"request approved"
     })
+}catch(error){
+    return res.status(500).json({
+        message:"Server Error",
+        error:error
+    })
+}
 }
