@@ -85,3 +85,14 @@ export const gotrequest=async (req,res)=>{
         requestgot:requestgot
     })
 }
+
+export const givepermission=(req,res)=>{
+    const request=requestmodel.find({
+        doctorid:req.body.requestid
+    })
+    request.status="approved"
+
+    res.status(200).json({
+        message:"request approved"
+    })
+}
