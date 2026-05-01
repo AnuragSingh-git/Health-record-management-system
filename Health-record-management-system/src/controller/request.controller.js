@@ -37,7 +37,7 @@ export const seerecord=(req,res)=>{
 
     if(!data){
         res.status(404).json({
-            message:"user have no data uploaded"
+            message:"no user data uploaded"
         })
     }
 
