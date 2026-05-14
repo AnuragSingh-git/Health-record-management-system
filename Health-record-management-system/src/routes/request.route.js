@@ -10,6 +10,6 @@ requestrouter.get("/data/:id",authmiddleware,seerecord)
 
 requestrouter.post("/send/id",authmiddleware,seekrequest)
 
-requestrouter.post("/seerequest",authmiddleware,gotrequest)
+requestrouter.post("/checkrequest",authmiddleware,gotrequest)
 
 export default requestrouter
