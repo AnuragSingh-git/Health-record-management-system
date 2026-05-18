@@ -44,7 +44,7 @@ export const registercontroller= async (req,res)=>{
     res.cookie("Accesstoken",accesstoken)
 
     res.status(201).json({
-        message:"user created",
+        message:"user is created",
         user:usercreated,
         Token:accesstoken
     })}
