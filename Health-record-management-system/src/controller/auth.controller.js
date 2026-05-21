@@ -6,9 +6,9 @@ import user from "../model/user.model.js";
 
 export const registercontroller= async (req,res)=>{
     try{
-    const {name,email,password}=req.body
+    const {email,password}=req.body
 
-    if(!name||!email||!password){
+    if(!email||!password){
         return res.status(400).json({message: "fill all field"})
     }
     const userexist=await user.findOne({
@@ -21,7 +21,7 @@ export const registercontroller= async (req,res)=>{
     }
     const hash=await bcrypt.hash(password,10)
     const usercreated= await user.create({
-        name:name,
+        name:email,
         email:email,
         password:hash
     })

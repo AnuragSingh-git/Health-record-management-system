@@ -6,9 +6,9 @@ function register() {
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
 
-    const handlesummit=(e)=>{
+    const handlesummit=async (e)=>{
         e.preventDefault()
-        api.post('/api/auth/register',{email,password}).then((res)=>{
+        await api.post('/api/auth/register',{email,password}).then((res)=>{
             console.log(res.data)
         }).catch((err)=>{
             console.log(err)
