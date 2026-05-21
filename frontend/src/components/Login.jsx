@@ -11,7 +11,7 @@ function Login() {
         await api.post('/api/auth/login',{email,password}).then((res)=>{
             console.log(res.data)
         }).catch((err)=>{
-            console.log(err)
+            console.log(err.response?.data || err.message)
         })
     }
   return (
