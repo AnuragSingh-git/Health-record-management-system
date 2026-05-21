@@ -28,14 +28,12 @@ export const registercontroller= async (req,res)=>{
 
     const refreshtoken=jwt.sign({
         id:usercreated._id,
-        name,
         email
     },"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
         {expiresIn:"1d"}
     )
     const accesstoken=jwt.sign({
         id:usercreated._id,
-        name,
         email
     },"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
     {expiresIn:"1d"})
@@ -54,10 +52,10 @@ export const registercontroller= async (req,res)=>{
 }
 export const logincontroller=async (req,res)=>{
     const {name,email,password}=req.body
-    if(!name&&!email){
-        return res.status(401).json({message:"fill one of the two field"})
+    if(!password||!email){
+        return res.status(401).json({message:"fill both field"})
     }
-    const finduser=await user.findOne({$or: [{name},{email}]})
+    const finduser=await user.findOne({$or: [{email}]})
 
     if(!finduser){
         return res.status(404).json({message:"user not found"})
@@ -68,17 +66,17 @@ export const logincontroller=async (req,res)=>{
         return res.status(401).json({message:"wrong password"})
     }
 
-    const refreshtoken=jwt.sign({id:finduser._id,name,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
+    const refreshtoken=jwt.sign({id:finduser._id,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
         {expiresIn:"1d"}
     )
 
-    const accesstoken=jwt.sign({id:finduser._id,name,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
+    const accesstoken=jwt.sign({id:finduser._id,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
         {expiresIn:"15m"}
     )
     res.cookie("Accesstoken",accesstoken)
 
     res.cookie("Refreshtoken",refreshtoken).json({
-        message:"user log in",
+        message:"user logged in",
         accesstoken,
         refreshtoken
     })
