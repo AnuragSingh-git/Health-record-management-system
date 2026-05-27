@@ -25,8 +25,7 @@ export const DoctorDashboard = () => {
         {user.role=="doctor"&&<div><div>Search Patients</div>
         <input type="text" onChange={(e)=>{setuserid(e.target.value)}} placeholder="Search patients..." />
         <button onClick={searchhandle}>Search</button></div>}
-        </div>}
+        </div>
       </div>
-    </div>
   )
 }
