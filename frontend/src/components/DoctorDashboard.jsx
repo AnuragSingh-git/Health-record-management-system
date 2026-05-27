@@ -15,7 +15,7 @@ export const DoctorDashboard = () => {
   }, [])
 
   const searchhandle=(e)=>{
-    const patientdetails=api.get(`//${userid}`)
+    const patientdetails=api.get(`/api/search/search/${userid}`)
   }
   
   return (
