@@ -7,7 +7,7 @@ export const DoctorDashboard = () => {
   const [userid, setuserid] = useState("")
 
   useEffect(() => {
-    const userdata=api.get("/getuser")
+    const userdata=api.get("api/auth/getuser")
     if(!userdata){
       return console.log("no user found")
     }
