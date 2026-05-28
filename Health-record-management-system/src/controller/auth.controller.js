@@ -61,7 +61,7 @@ export const logincontroller=async (req,res)=>{
         return res.status(404).json({message:"user not found"})
     }
 
-    const userexist=bcrypt.compare(password,finduser.password)
+    const userexist=await bcrypt.compare(password,finduser.password)
     if(!userexist){
         return res.status(401).json({message:"wrong password"})
     }
@@ -84,5 +84,6 @@ export const logincontroller=async (req,res)=>{
 }
 
 export const getuser=async (req,res)=>{
-    res.status(200).json({user:req.user})
+    const searchuser=await user.findOne({_id:req.user.id})
+    res.status(200).json({user:searchuser})
 }
