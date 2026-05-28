@@ -82,3 +82,7 @@ export const logincontroller=async (req,res)=>{
         refreshtoken
     })
 }
+
+export const getuser=async (req,res)=>{
+    res.status(200).json({user:req.user})
+}

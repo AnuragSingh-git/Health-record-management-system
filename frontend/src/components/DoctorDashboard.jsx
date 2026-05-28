@@ -11,7 +11,7 @@ export const DoctorDashboard = () => {
     if(!userdata){
       return console.log("no user found")
     }
-    setuser(userdata)
+    setuser(userdata.user)
   }, [])
 
   const searchhandle=(e)=>{
