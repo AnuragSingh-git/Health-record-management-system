@@ -5,7 +5,7 @@ import user from "../model/user.model.js";
 export const checkuserexist=async (req,res)=>{
     const user=req.param.id
 
-    const checkpatient=await user.find({_id:user})
+    const checkpatient=await user.findone({_id:user})
 
     if(!checkpatient){
         return res.status(404).json({

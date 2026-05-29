@@ -5,6 +5,7 @@ import { useState , useEffect } from 'react'
 export const DoctorDashboard = () => {
   const [user, setuser] = useState({})
   const [userid, setuserid] = useState("")
+  const [searcheduser, setsearcheduser] = useState({})
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -22,7 +23,11 @@ export const DoctorDashboard = () => {
   }, [])
 
   const searchhandle=async (e)=>{
-    const patientdetails=await api.get(`/api/search/search/${userid}`)
+    const patientdetails=await api.get(`/api/request/search/${userid}`)
+    if(!patientdetails){
+      return console.log("no patient found")
+    }
+    setsearcheduser(patientdetails.data)
   }
   
   return (
