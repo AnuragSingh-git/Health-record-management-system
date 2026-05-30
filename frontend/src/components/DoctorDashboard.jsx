@@ -25,7 +25,7 @@ export const DoctorDashboard = () => {
   const searchhandle=async (e)=>{
     const patientdetails=await api.get(`/api/request/search/${userid}`)
     if(!patientdetails){
-      return <div className='text-center'>Patient not found</div >
+      return console.log("no patient found")
     }
     setsearcheduser(patientdetails.data)
   }
