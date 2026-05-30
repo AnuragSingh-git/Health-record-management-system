@@ -15,7 +15,7 @@ export const checkuserexist=async (req,res)=>{
 
     res.status(200).json({
         patientname:checkpatient.name,
-        age:checkpatient.age
+        id:checkpatient._id
     })
 }
 
