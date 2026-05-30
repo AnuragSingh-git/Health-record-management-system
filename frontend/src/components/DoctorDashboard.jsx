@@ -38,7 +38,7 @@ export const DoctorDashboard = () => {
         {user.role=="doctor"&&<div className='flex flex-col gap-2'><div className='text-center'>Search Patients</div>
         <input type="text" onChange={(e)=>{setuserid(e.target.value)}} className='border' placeholder="Search patients..." />
         <button onClick={searchhandle} className='bg-gray-600 rounded-xl p-2'>Search</button></div>}
-        {searcheduser.patientname&&<div className='text-center'>Patient Name: {searcheduser.patientname} <br/> Age: {searcheduser.age}</div>}
+        {searcheduser.patientname&&<div className='text-center'>Patient Name: {searcheduser.patientname}</div>}
         </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import requestmodel from "../model/request.model.js";
 import user from "../model/user.model.js";
 
 export const checkuserexist=async (req,res)=>{
-    const usercheck=req.params.id
+    try{const usercheck=req.params.id
 
     const checkpatient=await user.findOne({_id:usercheck})
 
@@ -16,7 +16,9 @@ export const checkuserexist=async (req,res)=>{
     res.status(200).json({
         patientname:checkpatient.name,
         id:checkpatient._id
-    })
+    })}catch(error){
+        console.log(error)
+    }
 }
 
 export const seerecord=(req,res)=>{
