@@ -29,6 +29,10 @@ export const DoctorDashboard = () => {
     }
     setsearcheduser(patientdetails.data)
   }
+
+  const requestdetailhandle=async ()=>{
+    
+  }
   
   return (
     <div className='h-screen w-screen bg-blue-400 items-center justify-center flex'>
@@ -38,7 +42,7 @@ export const DoctorDashboard = () => {
         {user.role=="doctor"&&<div className='flex flex-col gap-2'><div className='text-center'>Search Patients</div>
         <input type="text" onChange={(e)=>{setuserid(e.target.value)}} className='border' placeholder="Search patients..." />
         <button onClick={searchhandle} className='bg-gray-600 rounded-xl p-2'>Search</button></div>}
-        {searcheduser.patientname&&<div className='text-center border'>Patient Name: {searcheduser.patientname}</div>}
+        {searcheduser.patientname&&<div onClick={(e)=>{requestdetailhandle}} className='text-center border rounded-xl p-2 bg-red-600'>Patient Name: {searcheduser.patientname}</div>}
         </div>
         </div>
       </div>
