@@ -27,7 +27,11 @@ export const seerecord=(req,res)=>{
         patientid:req.param.id
     })
 
-    
+    if(!permission){
+        res.status(404).json({
+            message:"User have no request"
+        })
+    }
 
     if(permission.status=="pending"||permission.status=="rejected"){
         return res.status(403).json({
