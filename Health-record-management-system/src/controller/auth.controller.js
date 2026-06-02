@@ -71,7 +71,7 @@ export const logincontroller=async (req,res)=>{
     )
 
     const accesstoken=jwt.sign({id:finduser._id,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
-        {expiresIn:"15m"}
+        {expiresIn:"1d"}
     )
     res.cookie("Accesstoken",accesstoken)
 
