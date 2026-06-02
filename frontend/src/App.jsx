@@ -1,6 +1,7 @@
 import React from 'react'
 import Register from './components/register.jsx'
 import Login from './components/Login.jsx'
+import { RequestPage } from './components/RequestPage.jsx'
 import { DoctorDashboard } from './components/DoctorDashboard.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -12,6 +13,7 @@ const App = () => {
           <Route path='/' element={<Login/>}/> 
           <Route path='/register' element={<Register/>}/> 
           <Route path='/dashboard' element={<DoctorDashboard/>}/> 
+          <Route path='/request/:id' element={<RequestPage/>}/>
         </Routes>
       </BrowserRouter>
     </div>

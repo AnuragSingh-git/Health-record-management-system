@@ -1,11 +1,13 @@
 import React from 'react'
 import api from '../services/api'
 import { useState , useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const DoctorDashboard = () => {
   const [user, setuser] = useState({})
   const [userid, setuserid] = useState("")
   const [searcheduser, setsearcheduser] = useState({})
+  const navigate=useNavigate()
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -31,7 +33,7 @@ export const DoctorDashboard = () => {
   }
 
   const requestdetailhandle=async ()=>{
-    
+    navigate(`/request/${searcheduser.id}`)
   }
   
   return (
@@ -42,7 +44,7 @@ export const DoctorDashboard = () => {
         {user.role=="doctor"&&<div className='flex flex-col gap-2'><div className='text-center'>Search Patients</div>
         <input type="text" onChange={(e)=>{setuserid(e.target.value)}} className='border' placeholder="Search patients..." />
         <button onClick={searchhandle} className='bg-gray-600 rounded-xl p-2'>Search</button></div>}
-        {searcheduser.patientname&&<div onClick={(e)=>{requestdetailhandle}} className='text-center border rounded-xl p-2 bg-red-600'>Patient Name: {searcheduser.patientname}</div>}
+        {searcheduser.patientname&&<div onClick={(e)=>{requestdetailhandle()}} className='text-center border rounded-xl p-2 bg-red-600'>Patient Name: {searcheduser.patientname}</div>}
         </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ const requestrouter=express.Router()
 
 requestrouter.get("/search/:id",authmiddleware,checkuserexist)
 
-requestrouter.get("/data/:id",authmiddleware,seerecord)
+requestrouter.get("/patient/:id",authmiddleware,seerecord)
 
 requestrouter.post("/send/id",authmiddleware,seekrequest)
 

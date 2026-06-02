@@ -21,10 +21,10 @@ export const checkuserexist=async (req,res)=>{
     }
 }
 
-export const seerecord=(req,res)=>{
-    const permission=requestmodel.find({
+export const seerecord=async (req,res)=>{
+    const permission=await requestmodel.findOne({
         doctorid:req.user.id,
-        patientid:req.param.id
+        patientid:req.params.id
     })
 
     if(!permission){
@@ -39,12 +39,12 @@ export const seerecord=(req,res)=>{
         })
     }
 
-    const data=filemodel.findById(
+    const data=await filemodel.findById(
         req.param.id
     )
 
     if(!data){
-        res.status(404).json({
+        return res.status(404).json({
             message:"no user data uploaded"
         })
     }
