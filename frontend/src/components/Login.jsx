@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import api from '../services/api'
+import { Link } from 'react-router-dom'
 
 function Login() {
     const [email, setemail] = useState("")
@@ -20,7 +21,7 @@ function Login() {
         <input onChange={(e)=>{setemail(e.target.value)}} className='border h-10 w-60 rounded-lg text-center' type='text' placeholder='email'/>
         <input onChange={(e)=>{setpassword(e.target.value)}} className='border h-10 w-60 rounded-lg text-center' type='password' placeholder='password'/>
         <button className='bg-blue-400 h-8 w-27 rounded-xl' type='submit'>Login</button>
-        <div>Does not have account yet? Register Here</div>
+        <div>Does not have account yet?<Link to='/register' className='text-red-800'> Register Here</Link></div>
     </form></div>
   )
 }
