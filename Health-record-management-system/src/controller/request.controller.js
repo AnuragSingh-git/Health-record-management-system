@@ -28,13 +28,16 @@ export const seerecord=async (req,res)=>{
     })
 
     if(!permission){
-        res.status(404).json({
+        return res.status(404).json({
+            Code:"no request",
             message:"User have no request"
         })
     }
 
     if(permission.status=="pending"||permission.status=="rejected"){
         return res.status(403).json({
+            reason:permission.status,
+            Code:"no permission",
             message:"no permission given"
         })
     }
@@ -45,6 +48,7 @@ export const seerecord=async (req,res)=>{
 
     if(!data){
         return res.status(404).json({
+            Code:"no data uploaded",
             message:"no user data uploaded"
         })
     }
