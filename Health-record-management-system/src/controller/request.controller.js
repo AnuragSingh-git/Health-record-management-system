@@ -59,7 +59,7 @@ export const seerecord=async (req,res)=>{
 }
 
 export const seekrequest=async (req,res)=>{
-    const patientid=req.param.id
+    const patientid=req.params.id
 
     const checkpatient=await user.find({_id:patientid})
 

@@ -8,7 +8,7 @@ requestrouter.get("/search/:id",authmiddleware,checkuserexist)
 
 requestrouter.get("/patient/:id",authmiddleware,seerecord)
 
-requestrouter.post("/send/id",authmiddleware,seekrequest)
+requestrouter.post("/send/:id",authmiddleware,seekrequest)
 
 requestrouter.post("/checkrequest",authmiddleware,gotrequest)
 
