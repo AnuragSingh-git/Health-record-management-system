@@ -31,10 +31,19 @@ export const RequestPage = () => {
         fetchUser()
     }, [id])
 
+    const sendrequesthandle=async ()=>{
+        try{
+            await api.post(`/api/request/send/${id}`)
+            setsearcheduser({status:"pending"})
+        }catch(err){
+            console.log(err.response?.data || err.message)
+        }
+    }
+
     return (
     <div className='h-screen w-screen flex bg-blue-400 items-center justify-center'>
         <div className='flex flex-col gap-2'>{searcheduser?.status==="no request"&&<div className='text-center border rounded-xl p-2 bg-yellow-600 text-5xl'>Request not found</div>}
-            <div className='text-center border rounded-xl p-2 bg-red-600'>Send Request</div></div>
+            <div onClick={sendrequesthandle} className='text-center border rounded-xl p-2 bg-red-600'>Send Request</div></div>
         <div>{searcheduser?.status==="no data uploaded"&&<div className='text-center border rounded-xl p-2 bg-blue-600'>No data uploaded</div>}</div>
         <div>{searcheduser?.status==="pending"&&<div className='text-center border rounded-xl p-2 bg-red-600'>Your request is pending</div>}</div>
         <div>{searcheduser?.status==="approved"&&<div className='text-center border rounded-xl p-2 bg-green-600'>Your request is approved</div>}</div>
