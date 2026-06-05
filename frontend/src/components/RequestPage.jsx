@@ -17,7 +17,7 @@ export const RequestPage = () => {
             }
             else if (error.response?.data?.Code === "no permission") {
                 setsearcheduser({ status:error?.response?.data?.reason})
-                console.error("No permission given")
+                console.error("No permission")
             }
             else if(error.response.data.Code==="no data uploaded"){ 
                 setsearcheduser({ status: "no data uploaded" })
