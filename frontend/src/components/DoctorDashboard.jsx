@@ -13,7 +13,7 @@ export const DoctorDashboard = () => {
     const fetchUser = async () => {
     try{const userdata = await api.get('/api/auth/getuser')
     if(!userdata){
-      return console.log("no user")
+      return console.log("no user found")
     }
     console.log(userdata.data.user)
     setuser(userdata.data.user)
