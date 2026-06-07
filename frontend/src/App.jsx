@@ -3,6 +3,7 @@ import Register from './components/register.jsx'
 import Login from './components/Login.jsx'
 import { RequestPage } from './components/RequestPage.jsx'
 import { DoctorDashboard } from './components/DoctorDashboard.jsx'
+import { PatientDashboard } from './components/PatientDashboard.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
           <Route path='/register' element={<Register/>}/> 
           <Route path='/dashboard' element={<DoctorDashboard/>}/> 
           <Route path='/request/:id' element={<RequestPage/>}/>
+          <Route path='/patientDashboard' element={<PatientDashboard/>}/>
         </Routes>
       </BrowserRouter>
     </div>
