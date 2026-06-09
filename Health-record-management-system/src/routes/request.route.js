@@ -10,6 +10,6 @@ requestrouter.get("/patient/:id",authmiddleware,seerecord)
 
 requestrouter.post("/send/:id",authmiddleware,seekrequest)
 
-requestrouter.post("/checkrequest",authmiddleware,gotrequest)
+requestrouter.get("/getrequests",authmiddleware,gotrequest)
 
 export default requestrouter

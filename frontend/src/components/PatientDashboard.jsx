@@ -3,6 +3,7 @@ import api from '../services/api'
 
 export const PatientDashboard = () => {
     const [User, setUser] = useState({})
+    const [gotrequests, setgotrequests] = useState([{}])
     useEffect(() => {
         const fetchUser = async () => {
         try{const userdata = await api.get('/api/auth/getuser')
@@ -18,6 +19,20 @@ export const PatientDashboard = () => {
     fetchUser()
   }, [])
 
+  const permissionhandle=()=>{
+    const fetchrequests = async () => {
+      try {
+        const response = await api.get('/api/request/getrequests');
+        setgotrequests(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching permission requests:', error.response?.data || error.message);
+      }
+    };
+
+    fetchrequests();
+  }
+
   return (
     <div className="h-screen w-screen flex flex-col gap-2 items-center justify-center bg-blue-400">
       <div className="bg-white p-4 rounded-lg shadow-lg">
@@ -29,7 +44,16 @@ export const PatientDashboard = () => {
         <p className="text-gray-600">You can view and manage your health records here.</p>
         <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg">View Records</button>
         <div className="mt-4 text-gray-600">You can also manage your permissions for doctors to access your records.</div>
-        <button className="mt-2 bg-green-500 text-white px-4 py-2 rounded-lg">Manage Permissions</button>
+        <button onClick={permissionhandle} className="mt-2 bg-green-500 text-white px-4 py-2 rounded-lg">Manage Permissions</button>
+        <div><div className='bg-gray-200 rounded-xl px-4 py-2 mt-4'>Permission Requests</div>
+        <div></div>
+        {gotrequests.map((gotrequests,index)=>(
+          <div key={index} className='bg-gray-100 rounded-lg p-2 mt-2 w-full'>
+            <div className='text-gray-800 font-semibold'>Doctor Name: {gotrequests[index].doctorname}</div>
+            <div className='text-gray-600'>Status: {gotrequests[index].status}</div>
+          </div>
+        ))}
+        </div>
       </div>
     </div>
   )
