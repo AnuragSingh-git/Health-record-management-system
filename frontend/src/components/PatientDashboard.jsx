@@ -3,7 +3,7 @@ import api from '../services/api'
 
 export const PatientDashboard = () => {
     const [User, setUser] = useState({})
-    const [gotrequests, setgotrequests] = useState([{}])
+    const [gotrequests, setgotrequests] = useState([])
     useEffect(() => {
         const fetchUser = async () => {
         try{const userdata = await api.get('/api/auth/getuser')
@@ -46,7 +46,7 @@ export const PatientDashboard = () => {
         <div>
         {gotrequests.map((requests,index)=>(
           <div key={index} className='bg-gray-100 rounded-lg p-2 mt-2 w-full'>
-            <div className='text-gray-800 font-semibold'>Doctor Name: {requests.doctorid}</div>
+            <div className='text-gray-800 font-semibold'>Doctor Name: {requests.doctorid.name}</div>
             <div className='text-gray-600'>Status: {requests.status}</div>
           </div>
         ))}</div>
