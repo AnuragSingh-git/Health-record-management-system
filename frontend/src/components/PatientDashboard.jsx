@@ -21,7 +21,7 @@ export const PatientDashboard = () => {
   return (
     <div className="h-screen w-screen flex flex-col gap-2 items-center justify-center bg-blue-400">
       <div className="bg-white p-4 rounded-lg shadow-lg">
-        <h1 className="text-2xl font-bold text-gray-800 text-center uppercase">HELLO {User.name}</h1>
+        <h1 className="text-2xl font-bold text-gray-800 text-center uppercase">{User.name}</h1>
         <p className="text-gray-600">Welcome to your dashboard!</p>
       </div>
       <div className="bg-white p-4 rounded-lg shadow-lg justify-center items-center flex flex-col">
