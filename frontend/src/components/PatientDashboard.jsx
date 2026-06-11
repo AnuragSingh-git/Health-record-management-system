@@ -33,7 +33,17 @@ export const PatientDashboard = () => {
     const givepermissionhandle=async (doctorid)=>{
         try{
             await api.post('/api/request/permission',{
-                doctorid,
+                doctorid
+            })
+        }catch(err){
+            console.log(err.response?.data || err.message)
+        }
+    }
+
+    const revokepermissionhandle=async (doctorid)=>{
+        try{
+            await api.post('/api/request/revokepermission',{
+                doctorid
             })
         }catch(err){
             console.log(err.response?.data || err.message)
@@ -63,7 +73,7 @@ export const PatientDashboard = () => {
               <button onClick={() => givepermissionhandle(requests.doctorid._id)} className='mt-2 bg-blue-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Allow</button>
             )}
             {requests.status === 'approved' && (
-              <button className='mt-2 bg-green-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Deny</button>
+              <button onClick={() => revokepermissionhandle(requests.doctorid._id)} className='mt-2 bg-green-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Deny</button>
             )}
             {requests.status === 'rejected' && (
               <button className='mt-2 bg-red-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Delete</button>
