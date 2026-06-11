@@ -50,7 +50,13 @@ export const PatientDashboard = () => {
             <div className='text-gray-800 font-semibold'>Doctor Name: {requests.doctorid.name}</div>
             <div className='text-gray-600'>Status: {requests.status}</div>
             {requests.status === 'pending' && (
-              <button className='mt-2 bg-blue-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'></button>
+              <button className='mt-2 bg-blue-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Allow</button>
+            )}
+            {requests.status === 'approved' && (
+              <button className='mt-2 bg-green-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Approved</button>
+            )}
+            {requests.status === 'rejected' && (
+              <button className='mt-2 bg-red-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Rejected</button>
             )}
           </div>
         ))}</div>
