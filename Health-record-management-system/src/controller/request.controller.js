@@ -100,8 +100,8 @@ export const gotrequest=async (req,res)=>{
 
 export const givepermission=async (req,res)=>{
     try{
-        const request=await requestmodel.find({
-        doctorid:req.body.requestid
+        const request=await requestmodel.findOne({
+        doctorid:req.body.doctorid
     })
 
     if(!request){
@@ -114,6 +114,31 @@ export const givepermission=async (req,res)=>{
 
     res.status(200).json({
         message:"request approved"
+    })
+    }catch(error){
+    return res.status(500).json({
+        message:"Server error",
+        error:error
+    })
+}
+}
+
+export const revokepermission=async (req,res)=>{
+    try{
+        const request=await requestmodel.findOne({
+        doctorid:req.body.doctorid
+    })
+
+    if(!request){
+        return res.status(404).json({
+            message:"No request found"
+        })
+    }
+    request.status="rejected"
+    await request.save()
+
+    res.status(200).json({
+        message:"request rejected"
     })
     }catch(error){
     return res.status(500).json({
