@@ -53,10 +53,10 @@ export const PatientDashboard = () => {
               <button className='mt-2 bg-blue-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Allow</button>
             )}
             {requests.status === 'approved' && (
-              <button className='mt-2 bg-green-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Approved</button>
+              <button className='mt-2 bg-green-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Deny</button>
             )}
             {requests.status === 'rejected' && (
-              <button className='mt-2 bg-red-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Rejected</button>
+              <button className='mt-2 bg-red-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Delete</button>
             )}
           </div>
         ))}</div>
