@@ -24,7 +24,7 @@ export const PatientDashboard = () => {
       try {
         const response = await api.get('/api/request/getrequests');
         setgotrequests(response.data.requestgot);
-        console.log(response.data.requestgot);
+        console.log(response.data.requestgot.message);
       } catch (error) {
         console.error('Error fetching permission requests:', error.response?.data || error.message);
       }
@@ -56,6 +56,9 @@ export const PatientDashboard = () => {
                 data: { doctorid }
             })
             console.log(response.data.message)
+            setgotrequests(prev =>
+            prev.filter(req => req.doctorid._id !== doctorid)
+            );
         }catch(err){
             console.log(err.response?.data || err.message)
         }
