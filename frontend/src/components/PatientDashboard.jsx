@@ -33,7 +33,7 @@ export const PatientDashboard = () => {
     const givepermissionhandle=async (doctorid)=>{
         try{
             await api.post('/api/request/permission',{
-                doctorid
+              doctorid
             })
         }catch(err){
             console.log(err.response?.data || err.message)
@@ -45,6 +45,17 @@ export const PatientDashboard = () => {
             await api.post('/api/request/revokepermission',{
                 doctorid
             })
+        }catch(err){
+            console.log(err.response?.data || err.message)
+        }
+    }
+
+    const deletepermissionhandle=async (doctorid)=>{
+        try{
+            const response = await api.delete('/api/request/deletepermission',{
+                data: { doctorid }
+            })
+            console.log(response.data.message)
         }catch(err){
             console.log(err.response?.data || err.message)
         }
@@ -76,7 +87,9 @@ export const PatientDashboard = () => {
               <button onClick={() => revokepermissionhandle(requests.doctorid._id)} className='mt-2 bg-green-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Deny</button>
             )}
             {requests.status === 'rejected' && (
-              <button className='mt-2 bg-red-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Delete</button>
+              <div className='flex flex-col gap-2'><button onClick={() => givepermissionhandle(requests.doctorid._id)} className='mt-2 bg-yellow-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Allow</button>
+              <button onClick={() => deletepermissionhandle(requests.doctorid._id)} className='mt-2 bg-red-500 text-white px-4 py-1 rounded-lg hover:scale-105 active:scale-90'>Delete</button>
+              </div>
             )}
           </div>
         ))}</div>

@@ -147,3 +147,24 @@ export const revokepermission=async (req,res)=>{
     })
 }
 }
+
+export const deletepermission=async (req,res)=>{
+    try{
+        const request=await requestmodel.findOneAndDelete({
+        doctorid:req.body.doctorid
+    })
+    if(!request){
+        return res.status(404).json({
+            message:"No request found"
+        })
+    }
+    res.status(200).json({
+        message:"request deleted"
+    })
+    }catch(error){
+    return res.status(500).json({
+        message:"Server error",
+        error:error
+    })
+}
+}

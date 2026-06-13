@@ -1,5 +1,5 @@
 import express from "express"
-import {checkuserexist, givepermission, gotrequest, seekrequest, seerecord, revokepermission} from "../controller/request.controller.js"
+import {checkuserexist, givepermission, gotrequest, seekrequest, seerecord, revokepermission, deletepermission} from "../controller/request.controller.js"
 import authmiddleware from "../middleware/auth.middleware.js"
 
 const requestrouter=express.Router()
@@ -15,5 +15,7 @@ requestrouter.get("/getrequests",authmiddleware,gotrequest)
 requestrouter.post("/permission",authmiddleware,givepermission)
 
 requestrouter.post("/revokepermission",authmiddleware,revokepermission)
+
+requestrouter.delete("/deletepermission",authmiddleware,deletepermission)
 
 export default requestrouter
