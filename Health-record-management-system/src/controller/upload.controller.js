@@ -7,7 +7,7 @@ const imagekit=new ImageKit({
     urlEndpoint:"https://ik.imagekit.io/AnuraSingh"
 })
 
-const uploadingfile=async (req,res)=>{
+export const uploadingfile=async (req,res)=>{
     try{const file=await imagekit.files.upload({
         file:req.file.buffer.toString("base64"),
         fileName:req.file.originalname
@@ -26,4 +26,25 @@ catch(error){
     console.log(error)
 }
 }
-export default uploadingfile
+
+export const getrecord=async(req,res)=>{
+    try{
+        const record=await filemodel.find({
+        user:req.user._id
+    })
+
+    if(record.length==0){
+        return res.status(404).json({
+            message:"No file uploaded found"
+        })
+    }
+
+    res.status(200).json({
+        record:record
+    })}catch(error){
+        return res.status(500).json({
+            message:"file server error",
+            error:error
+        })
+    }
+}

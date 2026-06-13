@@ -5,6 +5,7 @@ export const PatientDashboard = () => {
     const [User, setUser] = useState({})
     const [gotrequests, setgotrequests] = useState([])
     const [permission, setpermission] = useState(false)
+    const [showRequests, setShowRequests] = useState(false);
     useEffect(() => {
         const fetchUser = async () => {
         try{const userdata = await api.get('/api/auth/getuser')
@@ -24,8 +25,10 @@ export const PatientDashboard = () => {
       try {
         const response = await api.get('/api/request/getrequests');
         setgotrequests(response.data.requestgot);
-        console.log(response.data.requestgot.message);
+        console.log(response.data.requestgot);
+        setShowRequests(prev => !prev);
       } catch (error) {
+        setShowRequests(prev => !prev);
         console.error('Error fetching permission requests:', error.response?.data || error.message);
       }
     };
@@ -79,7 +82,12 @@ export const PatientDashboard = () => {
         <button onClick={permissionhandle} className="mt-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:scale-105 active:scale-90">Manage Permissions</button>
         <div className='flex flex-col items-center justify-center'><div className='bg-gray-200 w-fit rounded-xl px-4 py-2 mt-4'>Permission Requests</div>
         <div>
-        {gotrequests.map((requests,index)=>(
+        {showRequests && (gotrequests.length === 0 ? (
+        <div className="text-gray-700 mt-4 font-semibold">
+          No permission requests found
+        </div>
+      ) :
+        (gotrequests.map((requests,index)=>(
           <div key={index} className='bg-gray-100 rounded-lg p-2 mt-2 w-full'>
             <div className='text-gray-800 font-semibold'>Doctor Name: {requests.doctorid.name}</div>
             <div className='text-gray-600'>Status: {requests.status}</div>
@@ -95,7 +103,7 @@ export const PatientDashboard = () => {
               </div>
             )}
           </div>
-        ))}</div>
+        ))))}</div>
         </div>
       </div>
     </div>
