@@ -6,9 +6,9 @@ import user from "../model/user.model.js";
 
 export const registercontroller= async (req,res)=>{
     try{
-    const {email,password}=req.body
+    const {email,password,age,name,role}=req.body
 
-    if(!email||!password){
+    if(!email || !password || !name || !role || !age){
         return res.status(400).json({message: "fill all field"})
     }
     const userexist=await user.findOne({
@@ -21,8 +21,10 @@ export const registercontroller= async (req,res)=>{
     }
     const hash=await bcrypt.hash(password,10)
     const usercreated= await user.create({
-        name:email,
+        name:name,
+        age:age,
         email:email,
+        role:role,
         password:hash
     })
 
@@ -47,9 +49,11 @@ export const registercontroller= async (req,res)=>{
         Token:accesstoken
     })}
     catch(error){
-        console.log(error)
-    }
-}
+        return res.status(500).json({
+        message: "server error",
+        error: error.message
+        })
+}}
 export const logincontroller=async (req,res)=>{
     const {name,email,password}=req.body
     if(!password||!email){

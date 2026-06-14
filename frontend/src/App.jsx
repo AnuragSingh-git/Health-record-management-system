@@ -5,6 +5,7 @@ import { RequestPage } from './components/RequestPage.jsx'
 import { DoctorDashboard } from './components/DoctorDashboard.jsx'
 import { PatientDashboard } from './components/PatientDashboard.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Recordpatient } from './components/recordpatient.jsx'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path='/dashboard' element={<DoctorDashboard/>}/> 
           <Route path='/request/:id' element={<RequestPage/>}/>
           <Route path='/patientDashboard' element={<PatientDashboard/>}/>
+          <Route path='/recordpatient' element={<Recordpatient/>}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -84,7 +84,7 @@ export const PatientDashboard = () => {
         <div>
         {showRequests && (gotrequests.length === 0 ? (
         <div className="text-gray-700 mt-4 font-semibold">
-          No permission requests found
+          No requests found
         </div>
       ) :
         (gotrequests.map((requests,index)=>(

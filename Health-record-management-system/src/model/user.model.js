@@ -8,7 +8,7 @@ const userschema=new mongoose.Schema({
     role:{
         type:String,
         enum:["patient","doctor"],
-        require:true,
+        required:true,
         default:"patient"
     },
     age:Number

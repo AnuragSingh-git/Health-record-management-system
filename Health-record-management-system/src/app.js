@@ -14,7 +14,7 @@ app.use(cors({
 }))
 
 app.use('/api/auth',Router)
-app.use('/api/upload',uploadapi)
+app.use('/api/records',uploadapi)
 app.use("/api/request",requestrouter)
 
 export default app

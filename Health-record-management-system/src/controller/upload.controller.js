@@ -30,7 +30,7 @@ catch(error){
 export const getrecord=async(req,res)=>{
     try{
         const record=await filemodel.find({
-        user:req.user._id
+        user:req.user._id.populate("user")
     })
 
     if(record.length==0){
