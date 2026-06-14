@@ -3,7 +3,7 @@ import api from '../services/api'
 
 export const Recordpatient = () => {
     const [records, setrecords] = useState([{name:"hello",url:"abcdef"}])
-    const [addrecordbutton, setaddrecordbutton] = useState(true)
+    const [addrecordbutton, setaddrecordbutton] = useState(false)
     const [file, setFile] = useState(null);
     const [recordname, setRecordname] = useState("");
     const [date, setDate] = useState("");
@@ -88,8 +88,8 @@ export const Recordpatient = () => {
             )}
             <div className='border m-4 rounded-lg shadow-2xl'>
             {records.map((record,index)=>(
-            <div className='bg-amber-200 flex justify-center items-center gap-4 h-12 border rounded-lg m-4'>
-                <div className='bg-amber-50 border w-[80%] h-fit rounded-lg p-2 text-center uppercase'>url</div>
+            <div key={index} className='bg-amber-200 flex justify-center items-center gap-4 h-12 border rounded-lg m-4'>
+                <div className='bg-amber-50 border w-[80%] h-fit rounded-lg p-2 text-center uppercase'><a href={record.url} className='flex h-full w-full justify-center'>{record.recordname}</a></div>
                 <div className='bg-amber-50 border w-[13%] h-fit rounded-lg p-2 text-center uppercase'>Delete</div></div>
             ))
         }</div>
