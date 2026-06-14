@@ -6,7 +6,7 @@ import authmiddleware from "../middleware/auth.middleware.js"
 const fileapi=express.Router()
 const upload=multer({storage:multer.memoryStorage()})
 
-fileapi.post("/upload/file",authmiddleware,upload.single("file"),uploadingfile)
+fileapi.post("/upload",authmiddleware,upload.single("file"),uploadingfile)
 
 fileapi.post("/view",authmiddleware,getrecord)
 

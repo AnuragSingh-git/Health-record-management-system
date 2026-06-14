@@ -2,8 +2,10 @@ import mongoose from "mongoose";
 
 const file= new mongoose.Schema({
     user:{type:mongoose.Schema.Types.ObjectId,
-        ref:"users"
+        ref:"user"
     },
+    recordname:String,
+    date:Date,
     url:String
 })
 
