@@ -1,11 +1,12 @@
 import React, { useEffect , useState} from 'react'
 import api from '../services/api'
+import { useNavigate } from 'react-router-dom'
 
 export const PatientDashboard = () => {
     const [User, setUser] = useState({})
     const [gotrequests, setgotrequests] = useState([])
-    const [permission, setpermission] = useState(false)
-    const [showRequests, setShowRequests] = useState(false);
+    const [showRequests, setShowRequests] = useState(false)
+    const navigate=useNavigate()
     useEffect(() => {
         const fetchUser = async () => {
         try{const userdata = await api.get('/api/auth/getuser')
@@ -67,6 +68,10 @@ export const PatientDashboard = () => {
         }
     }
 
+    const getrecords=()=>{
+      navigate("/recordpatient")
+    }
+
 
   return (
     <div className="h-screen w-screen flex flex-col gap-2 items-center justify-center bg-blue-400">
@@ -77,7 +82,7 @@ export const PatientDashboard = () => {
       <div className="bg-white p-4 rounded-lg shadow-lg justify-center items-center flex flex-col">
         <h2 className="text-xl font-semibold text-gray-800">Your Health Records</h2>
         <p className="text-gray-600">You can view and manage your health records here.</p>
-        <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:scale-105 active:scale-90">View Records</button>
+        <button onClick={getrecords} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:scale-105 active:scale-90">View Records</button>
         <div className="mt-4 text-gray-600">You can also manage your permissions for doctors to access your records.</div>
         <button onClick={permissionhandle} className="mt-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:scale-105 active:scale-90">Manage Permissions</button>
         <div className='flex flex-col items-center justify-center'><div className='bg-gray-200 w-fit rounded-xl px-4 py-2 mt-4'>Permission Requests</div>
