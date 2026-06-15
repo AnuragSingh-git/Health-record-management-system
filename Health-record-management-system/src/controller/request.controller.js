@@ -42,9 +42,9 @@ export const seerecord=async (req,res)=>{
         })
     }
 
-    const data=await filemodel.findById(
-        req.param.id
-    )
+    const data=await filemodel.find({
+        user:req.params.id
+    })
 
     if(!data){
         return res.status(404).json({
@@ -101,7 +101,8 @@ export const gotrequest=async (req,res)=>{
 export const givepermission=async (req,res)=>{
     try{
         const request=await requestmodel.findOne({
-        doctorid:req.body.doctorid
+        doctorid:req.body.doctorid,
+        patientid:req.user.id
     })
 
     if(!request){
@@ -126,7 +127,8 @@ export const givepermission=async (req,res)=>{
 export const revokepermission=async (req,res)=>{
     try{
         const request=await requestmodel.findOne({
-        doctorid:req.body.doctorid
+        doctorid:req.body.doctorid,
+        patientid:req.user.id
     })
 
     if(!request){
@@ -151,7 +153,8 @@ export const revokepermission=async (req,res)=>{
 export const deletepermission=async (req,res)=>{
     try{
         const request=await requestmodel.findOneAndDelete({
-        doctorid:req.body.doctorid
+        doctorid:req.body.doctorid,
+        patientid:req.user.id
     })
     if(!request){
         return res.status(404).json({
