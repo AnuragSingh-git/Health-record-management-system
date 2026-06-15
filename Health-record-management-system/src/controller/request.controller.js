@@ -25,7 +25,7 @@ export const seerecord=async (req,res)=>{
     const permission=await requestmodel.findOne({
         doctorid:req.user.id,
         patientid:req.params.id
-    })
+    }).populate("patientid")
 
     if(!permission){
         return res.status(404).json({
@@ -54,7 +54,8 @@ export const seerecord=async (req,res)=>{
     }
 
     res.status(200).json({
-        data:data
+        data:data,
+        user:permission
     })
 }
 
