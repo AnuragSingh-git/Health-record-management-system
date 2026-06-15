@@ -45,12 +45,12 @@ export const RequestPage = () => {
 
     return (
     <div className='h-screen w-screen flex flex-col gap-2 items-center justify-center bg-blue-400'>
-        <div className='bg-amber-50 h-[90%] w-[90%] rounded-lg flex shadow-2xl justify-center'>{searcheduser?.status==="no request"&&<div><div className='text-center border rounded-xl p-2 bg-yellow-600 text-5xl'>Request not found</div>
+        <div className='bg-amber-50 h-[90%] w-[90%] rounded-lg flex shadow-2xl justify-center'>{searcheduser?.status==="no request"&&<div className='flex flex-col items-center justify-center gap-2'><div className='text-center border rounded-xl p-4 bg-yellow-400 text-5xl'>Request not found</div>
         <div onClick={sendrequesthandle} className='text-center border rounded-xl p-2 bg-red-600'>Send Request</div></div>}
-        <div>{searcheduser?.status==="no data uploaded"&&<div className='text-center border rounded-xl p-2 bg-blue-600'>No data uploaded</div>}</div>
-        <div>{searcheduser?.status==="pending"&&<div className='text-center border rounded-xl p-2 bg-red-600'>Your request is pending</div>}</div>
-        <div>{searcheduser?.status==="rejected"&&<div className='text-center border rounded-xl p-2 bg-gray-600'>Your request is rejected</div>}</div>
-        <div>{searcheduser?.status==="approved"&& (records.length==0 ? (<div className='bg-gray-400 border uppercase p-4 rounded-lg'>No Record Found</div>):
+        <div className='flex flex-col items-center justify-center gap-2'>{searcheduser?.status==="no data uploaded"&&<div className='text-center border rounded-xl p-2 bg-blue-600'>No data uploaded</div>}</div>
+        <div className='flex flex-col items-center justify-center gap-2'>{searcheduser?.status==="pending"&&<div className='text-center border rounded-xl p-4 bg-red-600 text-4xl'>Your request is pending</div>}</div>
+        <div className='flex flex-col items-center justify-center gap-2'>{searcheduser?.status==="rejected"&&<div className='text-center border rounded-xl p-2 bg-gray-600'>Your request is rejected</div>}</div>
+        <div className='flex flex-col items-center justify-center gap-2'>{searcheduser?.status==="approved"&& (records.length==0 ? (<div className='bg-gray-400 border uppercase p-4 rounded-lg'>No Record Found</div>):
         (<div className='border rounded-lg uppercase m-12 overflow-auto'><div className='bg-gray-400 flex h-19 w-full border justify-center items-center gap-4 px-4'><div className='bg-amber-50 border w-[67%] rounded-lg py-2 px-4 text-center uppercase'>{searcheduser.patientid.name||"Loading"}</div><div className='bg-amber-50 border w-[27%] rounded-lg py-2 px-4 text-center uppercase'>Age: {searcheduser.patientid.age}</div></div>
             {records.map((Data,index)=>(
             <div key={index} className='bg-amber-200 flex justify-center px-4 py-2 items-center gap-4 border rounded-lg m-4'>

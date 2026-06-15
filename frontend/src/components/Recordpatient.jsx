@@ -42,16 +42,16 @@ export const Recordpatient = () => {
             e.preventDefault()
             const formData = new FormData();
 
-        formData.append("file", file);
-        formData.append("recordname", recordname);
-        formData.append("date", date);
+            formData.append("file", file);
+            formData.append("recordname", recordname);
+            formData.append("date", date);
 
-        const response=await api.post("api/records/upload",formData)
-        setaddrecordbutton(false)
-        console.log(response.data)
-        }catch(error){
-            console.log(error.response?.data||error.message)
-        }
+            const response=await api.post("api/records/upload",formData)
+            setaddrecordbutton(false)
+            console.log(response.data)
+            }catch(error){
+                console.log(error.response?.data||error.message)
+            }
     }
     const Deletehandle=async (e)=>{
         try{
@@ -112,7 +112,7 @@ export const Recordpatient = () => {
             :(records.map((record,index)=>(
             <div key={index} className='bg-amber-200 flex justify-center px-4 py-2 items-center gap-4 border rounded-lg m-4'>
                 <div className='bg-amber-50 border flex-1 rounded-lg p-2 text-center uppercase'><a href={record.url} target="_blank" className='w-full block justify-center'>{record.recordname}</a></div>
-                <div className='bg-amber-50 border rounded-lg w-fit p-2 text-center'>Date:</div>
+                <div className='bg-amber-50 border rounded-lg w-fit p-2 text-center'>Date:{record.date.split("T")[0]}</div>
                 <button onClick={()=>{Deletehandle(record)}} className='bg-red-400 hover:scale-105 border rounded-lg p-2 text-center uppercase'>Delete</button></div>
             )))
         }</div>
