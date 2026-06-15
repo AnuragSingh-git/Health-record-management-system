@@ -6,7 +6,8 @@ const file= new mongoose.Schema({
     },
     recordname:String,
     date:Date,
-    url:String
+    url:String,
+    fileId:String
 })
 
 const filemodel=mongoose.model("fileurl",file)

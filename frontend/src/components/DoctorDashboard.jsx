@@ -37,7 +37,8 @@ export const DoctorDashboard = () => {
   }
   
   return (
-    <div className='h-screen w-screen bg-blue-400 items-center justify-center flex'>
+    <div className='h-screen w-screen flex flex-col gap-2 items-center justify-center bg-blue-400'>
+      <div className='bg-amber-50 h-[90%] w-[90%] rounded-lg shadow-2xl flex items-center justify-center'>
       <div className='h-1/2 w-1/2 flex flex-col bg-amber-50 rounded-4xl border items-center justify-center gap-2'>
         <h1 className='text-2xl font-bold p-2 rounded-xl bg-amber-400 border'>Welcome {user.name}</h1>
         <div className='flex flex-col gap-2'>
@@ -45,6 +46,7 @@ export const DoctorDashboard = () => {
         <input type="text" onChange={(e)=>{setuserid(e.target.value)}} className='border' placeholder="Search patients..." />
         <button onClick={searchhandle} className='bg-gray-600 rounded-xl p-2'>Search</button></div>}
         {searcheduser.patientname&&<div onClick={(e)=>{requestdetailhandle()}} className='text-center border rounded-xl p-2 bg-red-600'>Patient Name: {searcheduser.patientname}</div>}
+        </div>
         </div>
         </div>
       </div>
