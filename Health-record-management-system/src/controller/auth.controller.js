@@ -25,6 +25,7 @@ export const registercontroller= async (req,res)=>{
     const hash=await bcrypt.hash(password,10)
     const usercreated= await user.create({
         name:name,
+        username:username,
         age:age,
         email:email,
         role:role,
@@ -34,13 +35,13 @@ export const registercontroller= async (req,res)=>{
     const refreshtoken=jwt.sign({
         id:usercreated._id,
         email
-    },"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
+    },process.env.SECRET_KEY,
         {expiresIn:"1d"}
     )
     const accesstoken=jwt.sign({
         id:usercreated._id,
         email
-    },"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
+    },process.env.SECRET_KEY,
     {expiresIn:"1d"})
 
     res.cookie("Refreshtoken",refreshtoken)
@@ -73,11 +74,11 @@ export const logincontroller=async (req,res)=>{
         return res.status(401).json({message:"wrong password"})
     }
 
-    const refreshtoken=jwt.sign({id:finduser._id,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
+    const refreshtoken=jwt.sign({id:finduser._id,email},process.env.SECRET_KEY,
         {expiresIn:"1d"}
     )
 
-    const accesstoken=jwt.sign({id:finduser._id,email},"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I",
+    const accesstoken=jwt.sign({id:finduser._id,email},process.env.SECRET_KEY,
         {expiresIn:"1d"}
     )
     res.cookie("Accesstoken",accesstoken)

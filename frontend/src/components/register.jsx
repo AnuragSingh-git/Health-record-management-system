@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 function Register() {
     const [name, setname] = useState("");
+    const [username, setusername] = useState("");
     const [email, setemail] = useState("");
     const [password, setpassword] = useState("");
-    const [age, setage] = useState("");
+    const [age, setage] = useState(0);
     const [role, setrole] = useState("patient");
 
     const navigate = useNavigate();
@@ -15,16 +16,17 @@ function Register() {
         e.preventDefault();
 
         try {
-
+            console.log(name,email,password,age,role)
             await api.post("/api/auth/register", {
                 name,
+                username,
                 email,
                 password,
                 age,
                 role,
             });
 
-            navigate("/");
+            navigate("/login");
 
         } catch (err) {
             console.log(err.response?.data || err.message);
@@ -59,6 +61,14 @@ function Register() {
                         className="border rounded-2xl h-14 px-5 outline-none focus:ring-2 focus:ring-blue-400"
                         type="text"
                         placeholder="Full Name"
+                        required
+                    />
+
+                    <input
+                        onChange={(e) => setusername(e.target.value)}
+                        className="border rounded-2xl h-14 px-5 outline-none focus:ring-2 focus:ring-blue-400"
+                        type="text"
+                        placeholder="Username"
                         required
                     />
 
