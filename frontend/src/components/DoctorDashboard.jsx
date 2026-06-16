@@ -69,7 +69,7 @@ export const DoctorDashboard = () => {
     <div className="min-h-screen bg-sky-500 p-6">
       <div className="bg-stone-50 rounded-3xl shadow-2xl h-[92vh] flex overflow-hidden">
 
-        <div className="w-[250px] bg-white border-r p-6 flex flex-col justify-between">
+        <div className="w-62.5 bg-white border-r p-6 flex flex-col justify-between">
 
           <div>
             <h1 className="text-3xl font-bold text-blue-600 mb-10">
@@ -84,7 +84,7 @@ export const DoctorDashboard = () => {
               <button onClick={fetchPatients} className="w-full text-left p-3 rounded-xl hover:bg-gray-100">
                 Patients
               </button>
-              
+
             </div>
           </div>
 
@@ -116,7 +116,7 @@ export const DoctorDashboard = () => {
 
               </div>
 
-              <div className="bg-white rounded-3xl shadow-xl p-10 w-[650px] max-w-[90%]">
+              <div className="bg-white rounded-3xl shadow-xl p-10 w-162.5 max-w-[90%]">
 
                 <h2 className="text-3xl font-semibold text-center mb-8">
                   Search Patient
@@ -180,7 +180,7 @@ export const DoctorDashboard = () => {
 
               </div>
 
-              <div className="bg-white rounded-3xl shadow-xl p-6 max-h-[650px] overflow-y-auto">
+              <div className="bg-white rounded-3xl shadow-xl p-6 max-h-162.5 overflow-y-auto">
 
                 {patients.length > 0 ? (
 

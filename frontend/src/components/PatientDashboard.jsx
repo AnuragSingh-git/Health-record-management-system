@@ -200,7 +200,7 @@ export const PatientDashboard = () => {
 
       <div className="bg-stone-50 rounded-3xl shadow-2xl min-h-[92vh] p-10">
 
-        <div className="bg-gradient-to-r flex flex-col from-blue-600 to-cyan-500 rounded-3xl p-10 text-white mb-10 items-center justify-center">
+        <div className="bg-linear-to-r flex flex-col from-blue-600 to-cyan-500 rounded-3xl p-10 text-white mb-10 items-center justify-center">
 
           <h1 className="text-5xl font-bold">
             Welcome back, {User.name}
