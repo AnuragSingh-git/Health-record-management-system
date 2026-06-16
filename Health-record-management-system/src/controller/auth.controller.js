@@ -106,7 +106,8 @@ export const logincontroller=async (req,res)=>{
             sameSite: "none",
             path: "/",
             maxAge: 7 * 24 * 60 * 60 * 1000
-        }).json({
+        })
+    return res.json({
         message:"user logged in",
         user:finduser,
         accesstoken,
