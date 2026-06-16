@@ -10,7 +10,12 @@ export const Recordpatient = () => {
     const [date, setDate] = useState("")
 
     useEffect(() => {
-    const fetchRecords = async () => {
+        fetchuser()
+        fetchRecords
+      }
+    , [])
+
+    const fetchuser=async ()=>{
         try {
             const response = await api.post('/api/records/view')
             setrecords(response.data.record)
@@ -18,20 +23,12 @@ export const Recordpatient = () => {
         } catch (error) {
             console.log(error.response?.data || error.message)
         }
+    }
+
+    const fetchRecords = async () => {
+    const res = await api.post("/api/records/view");
+    setrecords(res.data.record);
     };
-
-    fetchRecords();
-    }, []);
-
-    useEffect(() => {
-        const fetchuser=async ()=>{
-            const user=await api.get("/api/auth/getuser")
-            setuser(user.data.user.name)
-        }
-        fetchuser()
-      }
-    , [])
-    
 
     const addhandle=()=>{
         setaddrecordbutton(prev=>!prev)
@@ -48,6 +45,7 @@ export const Recordpatient = () => {
 
             const response=await api.post("api/records/upload",formData)
             setaddrecordbutton(false)
+            fetchRecords()
             console.log(response.data)
             }catch(error){
                 console.log(error.response?.data||error.message)
@@ -56,6 +54,7 @@ export const Recordpatient = () => {
     const Deletehandle=async (e)=>{
         try{
             const response=await api.delete(`api/records/Delete/${e._id}`)
+            fetchRecords()
             console.log(response.data)
         }catch(error){
             console.log(error.response?.data||error.message)

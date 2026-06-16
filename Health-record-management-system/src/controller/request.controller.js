@@ -99,6 +99,24 @@ export const gotrequest=async (req,res)=>{
     })
 }
 
+export const gotrequestdoctor=async (req,res)=>{
+    const doctorid=req.user.id
+
+    const requestgot=await requestmodel.find({
+        doctorid
+    }).populate("patientid")
+
+    if(requestgot.length===0){
+        return res.status(404).json({
+            message:"no request found"
+        })
+    }
+    res.status(200).json({
+        message:"request found",
+        requestgot:requestgot
+    })
+}
+
 export const givepermission=async (req,res)=>{
     try{
         const request=await requestmodel.findOne({
