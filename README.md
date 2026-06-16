@@ -101,23 +101,25 @@ Register → Login → Search Patient → Send Request → Access Approved Recor
 
 ## 📸 Screenshots
 
-Add screenshots here:
-
 ### Landing Page
 
-(Add image)
+<img width="1898" height="910" alt="Front Page" src="https://github.com/user-attachments/assets/2925e31a-56b9-4dda-bf60-237933295e1d" />
+
 
 ### Patient Dashboard
 
-(Add image)
+<img width="1918" height="906" alt="Patient Dashboard" src="https://github.com/user-attachments/assets/2144a573-884a-4e5a-b3fe-d7200ecaae59" />
+
 
 ### Doctor Dashboard
 
-(Add image)
+<img width="1918" height="911" alt="Doctor Dashboard" src="https://github.com/user-attachments/assets/87efcea2-b7c9-433a-bfbb-8f11ab637c94" />
+
 
 ### Access Request Workflow
 
-(Add image)
+<img width="1536" height="1024" alt="ChatGPT Image Jun 16, 2026, 08_41_49 PM" src="https://github.com/user-attachments/assets/6c92e1ba-ef4c-430c-8e93-62704aba2b78" />
+
 
 ---
 
@@ -144,7 +146,7 @@ npm run dev
 Start backend
 
 ```bash
-npm start
+node server.js
 ```
 
 ---
