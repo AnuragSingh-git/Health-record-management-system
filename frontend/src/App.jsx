@@ -5,8 +5,8 @@ import { RequestPage } from './components/RequestPage.jsx'
 import { DoctorDashboard } from './components/DoctorDashboard.jsx'
 import { PatientDashboard } from './components/PatientDashboard.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Recordpatient } from './components/recordpatient.jsx'
 import { Home } from './components/Home.jsx'
+import { Recordpatient } from './components/Recordpatient.jsx'
 
 const App = () => {
   return (
