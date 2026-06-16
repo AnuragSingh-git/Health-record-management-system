@@ -44,8 +44,16 @@ export const registercontroller= async (req,res)=>{
     },process.env.SECRET_KEY,
     {expiresIn:"1d"})
 
-    res.cookie("Refreshtoken",refreshtoken)
-    res.cookie("Accesstoken",accesstoken)
+    res.cookie("Refreshtoken", token, {
+            httpOnly: true,
+            secure: true,     
+            sameSite: "none"
+        });
+    res.cookie("Accesstoken", token, {
+            httpOnly: true,
+            secure: true,       
+            sameSite: "none"
+        });
 
     res.status(201).json({
         message:"user is created",
@@ -81,9 +89,16 @@ export const logincontroller=async (req,res)=>{
     const accesstoken=jwt.sign({id:finduser._id,email},process.env.SECRET_KEY,
         {expiresIn:"1d"}
     )
-    res.cookie("Accesstoken",accesstoken)
-
-    res.cookie("Refreshtoken",refreshtoken).json({
+    res.cookie("Refreshtoken", token, {
+            httpOnly: true,
+            secure: true,     
+            sameSite: "none"
+        });
+    res.cookie("Accesstoken", token, {
+            httpOnly: true,
+            secure: true,       
+            sameSite: "none"
+        }).json({
         message:"user logged in",
         user:finduser,
         accesstoken,
