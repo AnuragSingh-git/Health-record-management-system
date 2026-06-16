@@ -11,23 +11,28 @@ export const Recordpatient = () => {
 
     useEffect(() => {
         fetchuser()
-        fetchRecords
+        fetchRecords()
       }
     , [])
 
     const fetchuser=async ()=>{
         try {
-            const response = await api.post('/api/records/view')
-            setrecords(response.data.record)
-            console.log(response.data.record)
+            const response = await api.get('/api/auth/getuser')
+            setuser(response.data.user.name)
+            console.log(response.data)
         } catch (error) {
             console.log(error.response?.data || error.message)
         }
     }
 
     const fetchRecords = async () => {
-    const res = await api.post("/api/records/view");
-    setrecords(res.data.record);
+    try {
+            const response = await api.post('/api/records/view')
+            setrecords(response.data.record)
+            console.log(response.data.record)
+        } catch (error) {
+            console.log(error.response?.data || error.message)
+        }
     };
 
     const addhandle=()=>{
