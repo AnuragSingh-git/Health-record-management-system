@@ -19,7 +19,7 @@ const App = () => {
           <Route path='/DoctorDashboard' element={<DoctorDashboard/>}/> 
           <Route path='/request/:id' element={<RequestPage/>}/>
           <Route path='/patientDashboard' element={<PatientDashboard/>}/>
-          <Route path='/RecordPatient' element={<RecordPatient/>}/>
+          <Route path='/recordpatient' element={<RecordPatient/>}/>
         </Routes>
       </BrowserRouter>
     </div>

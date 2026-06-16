@@ -48,7 +48,7 @@ export const RecordPatient = () => {
             formData.append("recordname", recordname);
             formData.append("date", date);
 
-            const response=await api.post("api/records/upload",formData)
+            const response=await api.post("/api/records/upload",formData)
             setaddrecordbutton(false)
             fetchRecords()
             console.log(response.data)
