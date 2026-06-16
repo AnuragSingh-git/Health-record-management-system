@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import api from '../services/api'
 
-export const Recordpatient = () => {
+export const RecordPatient = () => {
     const [user, setuser] = useState("")
     const [records, setrecords] = useState([])
     const [addrecordbutton, setaddrecordbutton] = useState(false)
