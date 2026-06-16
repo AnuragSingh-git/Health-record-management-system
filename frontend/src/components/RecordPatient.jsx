@@ -71,7 +71,7 @@ export const RecordPatient = () => {
     <div className="h-screen w-screen flex flex-col gap-2 items-center justify-center bg-blue-400">
         <div className='bg-amber-50 h-[90%] w-[90%] rounded-lg shadow-2xl'>
             <div className='bg-gray-400 flex h-12 border m-4 rounded-lg justify-center items-center gap-4'><div className='bg-amber-50 border w-[67%] h-fit rounded-lg p-2 text-center uppercase'>{user||"Loading"}</div><div className='bg-amber-50 border w-[27%] h-fit rounded-lg p-2 text-center uppercase'>Age:{records[0]?.user?.age}</div></div>
-            <div className='flex justify-center'><button onClick={addhandle} className='bg-red-400 hover:scale-105 flex h-12 w-40 border mx-4 rounded-lg justify-center items-center gap-4'>Add Reacord</button></div>
+            <div className='flex justify-center'><button onClick={addhandle} className='bg-red-400 hover:scale-105 flex h-12 w-40 border mx-4 rounded-lg justify-center items-center gap-4'>Add Record</button></div>
             {addrecordbutton && (
             <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50">
             <div className="bg-white w-120 p-6 rounded-xl shadow-lg flex flex-col gap-4">
