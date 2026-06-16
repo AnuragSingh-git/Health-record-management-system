@@ -9,7 +9,7 @@ const authmiddleware=(req,res,next)=>{
         })
     }
     
-    const decoded=jwt.verify(cookie,"MPcHQouySHaRd2aU4pK8efeMaiDogEL2MCySxAuDt3I")
+    const decoded=jwt.verify(cookie,process.env.SECRET_KEY)
 
     if(!decoded){
         return res.status(401).json({
