@@ -93,16 +93,12 @@ export const logincontroller=async (req,res)=>{
     const accesstoken=jwt.sign({id:finduser._id,email},process.env.SECRET_KEY,
         {expiresIn:"1d"}
     )
-    res.cookie("Refreshtoken", refreshtoken, {
-            httpOnly: true,
-            secure: true,     
+    res.cookie("Refreshtoken", refreshtoken, { 
             sameSite: "none",
             path: "/",
             maxAge: 7 * 24 * 60 * 60 * 1000
         });
-    res.cookie("Accesstoken", accesstoken, {
-            httpOnly: true,
-            secure: true,       
+    res.cookie("Accesstoken", accesstoken, {     
             sameSite: "none",
             path: "/",
             maxAge: 7 * 24 * 60 * 60 * 1000
