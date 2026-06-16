@@ -47,12 +47,14 @@ export const registercontroller= async (req,res)=>{
     res.cookie("Refreshtoken", refreshtoken, {
             httpOnly: true,
             secure: true,     
-            sameSite: "none"
+            sameSite: "none",
+            path: "/"
         });
     res.cookie("Accesstoken", accesstoken, {
             httpOnly: true,
             secure: true,       
-            sameSite: "none"
+            sameSite: "none",
+            path: "/"
         });
 
     res.status(201).json({
@@ -92,12 +94,14 @@ export const logincontroller=async (req,res)=>{
     res.cookie("Refreshtoken", refreshtoken, {
             httpOnly: true,
             secure: true,     
-            sameSite: "none"
+            sameSite: "none",
+            path: "/"
         });
     res.cookie("Accesstoken", accesstoken, {
             httpOnly: true,
             secure: true,       
-            sameSite: "none"
+            sameSite: "none",
+            path: "/"
         }).json({
         message:"user logged in",
         user:finduser,

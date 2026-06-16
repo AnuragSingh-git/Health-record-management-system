@@ -12,6 +12,7 @@ app.use(cors({
     origin:"https://health-record-management-system-three.vercel.app",
     credentials:true
 }))
+app.set("trust proxy", 1);
 
 app.use('/api/auth',Router)
 app.use('/api/records',uploadapi)
