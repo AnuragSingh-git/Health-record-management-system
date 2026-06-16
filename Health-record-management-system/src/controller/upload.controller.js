@@ -5,7 +5,7 @@ import user from '../model/user.model.js';
 const imagekit=new ImageKit({
     privateKey:process.env.IMAGEKIT_PRIVATE_KEY,
     publicKey:process.env.IMAGEKIT_PUBLIC_KEY,
-    urlEndpoint:process.env.IMAGEKIT_URL_ENDPOINT"
+    urlEndpoint:process.env.IMAGEKIT_URL_ENDPOINT
 })
 
 export const uploadingfile=async (req,res)=>{
