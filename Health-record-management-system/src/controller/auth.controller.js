@@ -60,7 +60,7 @@ export const registercontroller= async (req,res)=>{
         });
 
     res.status(201).json({
-        message:"user is created",
+        message:"user created",
         user:usercreated,
         Token:accesstoken
     })}
