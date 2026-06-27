@@ -51,7 +51,7 @@ export const getrecord=async(req,res)=>{
 
     if(record.length==0){
         return res.status(404).json({
-            message:"No file uploaded found"
+            message:"No file uploaded"
         })
     }
 
