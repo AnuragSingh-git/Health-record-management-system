@@ -5,7 +5,7 @@ const authmiddleware=(req,res,next)=>{
     const cookie=req.cookies.Accesstoken
     if(!cookie){
         return res.status(401).json({
-            message:"No token found"
+            message:"No token"
         })
     }
     
