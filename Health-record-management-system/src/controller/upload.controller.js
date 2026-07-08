@@ -12,7 +12,7 @@ export const uploadingfile=async (req,res)=>{
     try{
         if (!req.file) {
         return res.status(400).json({
-        message: "No file uploaded found"
+        message: "No file uploaded"
         });
         }
         const file=await imagekit.files.upload({
