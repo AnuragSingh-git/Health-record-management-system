@@ -9,7 +9,7 @@ export const registercontroller= async (req,res)=>{
     const {email,password,age,name,role,username}=req.body
 
     if(!email || !password || !name || !role || !age || !username){
-        return res.status(400).json({message: "fill all field"})
+        return res.status(400).json({message: "filling all field required"})
     }
     const userexist=await user.findOne({
         $or: [
