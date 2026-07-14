@@ -72,11 +72,28 @@ function Register() {
 
                             <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
 
-                            <p className="mt-5 text-xl font-semibold text-blue-700">
+                            <div className="mt-5 text-center">
 
-                                {success ? "Registration Successful..." : "Creating Account..."}
+                                <p className="text-xl font-semibold text-blue-700">
 
-                            </p>
+                                    {success ? "Registration Successful!" : "Creating Account..."}
+
+                                </p>
+
+                                {!success && (
+
+                                    <p className="mt-3 text-sm text-gray-600 max-w-sm leading-6">
+
+                                        This app is hosted on a free <span className="font-semibold">Render</span> server.
+                                        If the server is sleeping, creating your account may take
+                                        <span className="font-semibold"> 30–60 seconds </span>
+                                        while the server wakes up. Please keep this page open and wait.
+
+                                    </p>
+
+                                )}
+
+                            </div>
 
                         </div>
 
@@ -103,11 +120,10 @@ function Register() {
                     message && (
 
                         <div
-                            className={`mb-5 p-3 rounded-xl text-center font-semibold ${
-                                success
+                            className={`mb-5 p-3 rounded-xl text-center font-semibold ${success
                                     ? "bg-green-100 text-green-700"
                                     : "bg-red-100 text-red-700"
-                            }`}
+                                }`}
                         >
 
                             {message}
