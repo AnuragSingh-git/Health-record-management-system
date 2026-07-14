@@ -68,32 +68,51 @@ function Register() {
 
                     <div className='absolute inset-0 bg-[url("https://images.unsplash.com/photo-1641160923894-b1a80920187d?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")] bg-cover bg-center flex items-center justify-center z-50'>
 
-                        <div className="bg-white/80 backdrop-blur-lg rounded-3xl px-10 py-8 flex flex-col items-center shadow-2xl">
+                        <div className="bg-white/90 backdrop-blur-lg rounded-3xl px-10 py-10 flex flex-col items-center shadow-2xl max-w-md text-center">
 
                             <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
 
-                            <div className="mt-5 text-center">
+                            <h2 className="mt-6 text-2xl font-bold text-blue-700">
 
-                                <p className="text-xl font-semibold text-blue-700">
+                                {success ? "Registration Successful!" : "Creating Account..."}
 
-                                    {success ? "Registration Successful!" : "Creating Account..."}
+                            </h2>
 
-                                </p>
+                            {
+                                !success && (
 
-                                {!success && (
+                                    <p className="mt-4 text-gray-600 leading-7">
 
-                                    <p className="mt-3 text-sm text-gray-600 max-w-sm leading-6">
+                                        🚀 <span className="font-semibold">Please wait while we create your account.</span>
 
-                                        This app is hosted on a free <span className="font-semibold">Render</span> server.
-                                        If the server is sleeping, creating your account may take
+                                        <br /><br />
+
+                                        This application is hosted on the <span className="font-semibold">Render Free Tier</span>.
+                                        If the server is currently sleeping, it may take
                                         <span className="font-semibold"> 30–60 seconds </span>
-                                        while the server wakes up. Please keep this page open and wait.
+                                        to wake up before your account is created.
+
+                                        <br /><br />
+
+                                        Please keep this page open and do not refresh.
 
                                     </p>
 
-                                )}
+                                )
+                            }
 
-                            </div>
+                            {
+                                success && (
+
+                                    <p className="mt-4 text-green-600 font-medium">
+
+                                        Your account has been created successfully.
+                                        Redirecting you to the login page...
+
+                                    </p>
+
+                                )
+                            }
 
                         </div>
 
