@@ -3,6 +3,7 @@ import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
+
     const [name, setname] = useState("");
     const [username, setusername] = useState("");
     const [email, setemail] = useState("");
@@ -10,13 +11,21 @@ function Register() {
     const [age, setage] = useState(0);
     const [role, setrole] = useState("patient");
 
+    const [loading, setloading] = useState(false);
+    const [message, setmessage] = useState("");
+    const [success, setsuccess] = useState(false);
+
     const navigate = useNavigate();
 
     const handlesubmit = async (e) => {
+
         e.preventDefault();
 
+        setloading(true);
+        setmessage("");
+
         try {
-            console.log(name,email,password,age,role)
+
             await api.post("/api/auth/register", {
                 name,
                 username,
@@ -26,16 +35,55 @@ function Register() {
                 role,
             });
 
-            navigate("/login");
+            setsuccess(true);
+            setmessage("Registration Successful!");
 
-        } catch (err) {
-            console.log(err.response?.data || err.message);
+            setTimeout(() => {
+                navigate("/login");
+            }, 1500);
+
         }
+
+        catch (err) {
+
+            setsuccess(false);
+
+            setmessage(
+                err.response?.data?.message ||
+                "Registration Failed!"
+            );
+
+            setloading(false);
+
+        }
+
     };
 
     return (
 
-        <div className='min-h-screen bg-[url("https://images.unsplash.com/photo-1641160923894-b1a80920187d?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")] bg-cover bg-center flex items-center justify-center p-8'>
+        <div className='min-h-screen bg-[url("https://images.unsplash.com/photo-1641160923894-b1a80920187d?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")] bg-cover bg-center flex items-center justify-center p-8 relative'>
+
+            {
+                loading && (
+
+                    <div className='absolute inset-0 bg-[url("https://images.unsplash.com/photo-1641160923894-b1a80920187d?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")] bg-cover bg-center flex items-center justify-center z-50'>
+
+                        <div className="bg-white/80 backdrop-blur-lg rounded-3xl px-10 py-8 flex flex-col items-center shadow-2xl">
+
+                            <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+
+                            <p className="mt-5 text-xl font-semibold text-blue-700">
+
+                                {success ? "Registration Successful..." : "Creating Account..."}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                )
+            }
 
             <div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl w-full max-w-lg p-10">
 
@@ -50,6 +98,24 @@ function Register() {
                     </p>
 
                 </div>
+
+                {
+                    message && (
+
+                        <div
+                            className={`mb-5 p-3 rounded-xl text-center font-semibold ${
+                                success
+                                    ? "bg-green-100 text-green-700"
+                                    : "bg-red-100 text-red-700"
+                            }`}
+                        >
+
+                            {message}
+
+                        </div>
+
+                    )
+                }
 
                 <form
                     onSubmit={handlesubmit}
@@ -114,9 +180,12 @@ function Register() {
 
                     <button
                         type="submit"
-                        className="bg-blue-600 text-white h-14 rounded-2xl hover:bg-blue-700 transition"
+                        disabled={loading}
+                        className="bg-blue-600 text-white h-14 rounded-2xl hover:bg-blue-700 transition disabled:bg-blue-400"
                     >
-                        Create Account
+
+                        {loading ? "Please Wait..." : "Create Account"}
+
                     </button>
 
                 </form>
@@ -145,6 +214,7 @@ function Register() {
         </div>
 
     );
+
 }
 
 export default Register;
