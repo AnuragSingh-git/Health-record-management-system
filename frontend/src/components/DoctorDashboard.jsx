@@ -280,7 +280,7 @@ export const DoctorDashboard = () => {
 
                 </div>
 
-                <div className="grid grid-cols-3 gap-5 w-162.5 max-w-[90%] mb-8">
+                <div className="grid grid-cols-3 gap-5 w-full max-w-4xl mb-8">
 
                   <div className="bg-white rounded-2xl shadow p-5 text-center">
                     <p className="text-3xl font-bold text-green-600">{approvedCount}</p>
@@ -299,7 +299,7 @@ export const DoctorDashboard = () => {
 
                 </div>
 
-                <div className="bg-white rounded-3xl shadow-xl p-10 w-162.5 max-w-[90%] mb-8">
+                <div className="bg-white rounded-3xl shadow-xl p-10 w-full max-w-4xl mb-8">
 
                   <h2 className="text-2xl font-semibold text-center mb-6">
 
@@ -363,7 +363,7 @@ export const DoctorDashboard = () => {
 
                 </div>
 
-                <div className="bg-white rounded-3xl shadow-xl p-10 w-162.5 max-w-[90%]">
+                <div className="bg-white rounded-3xl shadow-xl p-10 w-full max-w-4xl">
 
                   <h2 className="text-2xl font-semibold text-center mb-8">
 
@@ -371,7 +371,7 @@ export const DoctorDashboard = () => {
 
                   </h2>
 
-                  <div className="grid grid-cols-2 gap-5">
+                  <div className="grid grid-cols-4 gap-5">
 
                     <div className="bg-blue-50 rounded-2xl p-5">
 
