@@ -115,19 +115,19 @@ export const DoctorDashboard = () => {
 
   return (
 
-    <div className="min-h-screen bg-sky-500 p-6">
+    <div className="min-h-screen bg-sky-500 p-4">
 
-      <div className="bg-stone-50 rounded-3xl shadow-2xl h-[92vh] flex overflow-hidden">
+      <div className="bg-stone-50 rounded-2xl shadow-2xl h-[95vh] flex overflow-hidden">
 
-        <div className="w-62.5 bg-white border-r p-6 flex flex-col justify-between">
+        <div className="w-56 bg-white border-r p-4 flex flex-col justify-between">
 
           <div>
 
-            <h1 className="text-3xl font-bold text-blue-600 mb-10">
+            <h1 className="text-xl font-bold text-blue-600 mb-6">
               MediCare
             </h1>
 
-            <div className="space-y-3">
+            <div className="space-y-1">
 
               <button
                 onClick={() => {
@@ -135,12 +135,12 @@ export const DoctorDashboard = () => {
                     "dashboard"
                   )
                 }}
-                className={`w-full text-left p-4 rounded-xl transition ${activeTab === "dashboard"
+                className={`w-full text-left text-sm font-medium p-2.5 rounded-lg transition ${activeTab === "dashboard"
                     ?
-                    "bg-blue-100"
+                    "bg-blue-100 text-blue-700"
 
                     :
-                    "hover:bg-gray-100"
+                    "hover:bg-gray-100 text-gray-600"
                   }`}
               >
 
@@ -152,12 +152,12 @@ export const DoctorDashboard = () => {
                 onClick={
                   fetchPatients
                 }
-                className={`w-full text-left p-4 rounded-xl transition ${activeTab === "patients"
+                className={`w-full text-left text-sm font-medium p-2.5 rounded-lg transition ${activeTab === "patients"
                     ?
-                    "bg-blue-100"
+                    "bg-blue-100 text-blue-700"
 
                     :
-                    "hover:bg-gray-100"
+                    "hover:bg-gray-100 text-gray-600"
                   }`}
               >
 
@@ -169,13 +169,13 @@ export const DoctorDashboard = () => {
 
           </div>
 
-          <div className="border rounded-xl p-4">
+          <div className="border rounded-lg p-3">
 
-            <h2 className="font-semibold">
+            <h2 className="text-sm font-semibold leading-tight">
               Dr. {user.name || "Loading..."}
             </h2>
 
-            <p className="text-sm text-gray-500">
+            <p className="text-xs text-gray-500">
               {user.role}
             </p>
 
@@ -183,7 +183,7 @@ export const DoctorDashboard = () => {
 
         </div>
 
-        <div className="flex-1 flex flex-col items-center justify-center p-8">
+        <div className="flex-1 flex flex-col items-center justify-start p-6 overflow-y-auto">
 
           {activeTab === "dashboard"
 
@@ -193,9 +193,9 @@ export const DoctorDashboard = () => {
 
               <>
 
-                <div className="text-center mb-10">
+                <div className="text-center mb-6">
 
-                  <h1 className="text-5xl font-bold text-gray-800">
+                  <h1 className="text-2xl font-bold text-gray-800">
 
                     Welcome back,
                     {" "}
@@ -205,7 +205,7 @@ export const DoctorDashboard = () => {
 
                   </h1>
 
-                  <p className="text-gray-500 mt-3 text-lg">
+                  <p className="text-gray-500 mt-1 text-sm">
 
                     Manage patients and requests quickly
 
@@ -213,15 +213,15 @@ export const DoctorDashboard = () => {
 
                 </div>
 
-                <div className="bg-white rounded-3xl shadow-xl p-10 w-162.5 max-w-[90%]">
+                <div className="bg-white rounded-2xl shadow-lg p-6 w-140 max-w-[90%]">
 
-                  <h2 className="text-3xl font-semibold text-center mb-8">
+                  <h2 className="text-lg font-semibold text-center mb-4">
 
                     Search Patient
 
                   </h2>
 
-                  <div className="space-y-5">
+                  <div className="space-y-3">
 
                     <input
                       type="text"
@@ -232,14 +232,14 @@ export const DoctorDashboard = () => {
                         )
                       }}
                       placeholder="Enter Patient User ID"
-                      className="w-full border rounded-2xl p-4 outline-none focus:ring-2 focus:ring-blue-400"
+                      className="w-full border rounded-lg p-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-400"
                     />
 
                     <button
                       onClick={
                         searchhandle
                       }
-                      className="w-full bg-blue-600 text-white py-4 rounded-2xl hover:bg-blue-700 transition"
+                      className="w-full bg-blue-600 text-white text-sm font-medium py-2.5 rounded-lg hover:bg-blue-700 transition"
                     >
 
                       Search Patient
@@ -250,9 +250,9 @@ export const DoctorDashboard = () => {
 
                   {searcheduser.patientname && (
 
-                    <div className="mt-8 bg-gray-50 rounded-2xl p-6 text-center border">
+                    <div className="mt-4 bg-gray-50 rounded-xl p-4 text-center border">
 
-                      <h3 className="text-2xl font-bold">
+                      <h3 className="text-base font-bold">
 
                         {
                           searcheduser.patientname
@@ -264,7 +264,7 @@ export const DoctorDashboard = () => {
                         onClick={
                           requestdetailhandle
                         }
-                        className="mt-5 bg-red-500 text-white px-8 py-3 rounded-xl hover:bg-red-600"
+                        className="mt-3 bg-red-500 text-white text-sm px-5 py-2 rounded-lg hover:bg-red-600"
                       >
 
                         View Request Details
@@ -285,25 +285,25 @@ export const DoctorDashboard = () => {
 
             (
 
-              <div className="w-full max-w-5xl">
+              <div className="w-full max-w-4xl">
 
-                <div className="mb-8">
+                <div className="mb-4">
 
-                  <h1 className="text-4xl font-bold text-center">
+                  <h1 className="text-2xl font-bold text-center">
                     Patients
                   </h1>
 
-                  <p className="text-center text-gray-500 mt-2">
+                  <p className="text-center text-gray-500 text-sm mt-1">
                     Approved • Pending • Rejected
                   </p>
 
                 </div>
 
-                <div className="bg-white rounded-3xl shadow-xl p-6 max-h-162.5 overflow-y-auto">
+                <div className="bg-white rounded-2xl shadow-lg p-4 max-h-162.5 overflow-y-auto">
 
                   {patients.length > 0 ? (
 
-                    <div className="space-y-5">
+                    <div className="space-y-2">
 
                       {patients.map(
                         (patient, index) => (
@@ -319,18 +319,18 @@ export const DoctorDashboard = () => {
                                 )
                               }
                             }}
-                            className={`border rounded-2xl p-6 flex justify-between items-center transition ${patient.status === "approved"
+                            className={`border rounded-xl px-4 py-2.5 flex justify-between items-center transition ${patient.status === "approved"
                                 ?
-                                "hover:shadow-md cursor-pointer"
+                                "hover:bg-blue-50 hover:border-blue-200 cursor-pointer"
 
                                 :
-                                "opacity-90"
+                                "opacity-80"
                               }`}
                           >
 
                             <div>
 
-                              <h2 className="text-xl font-bold">
+                              <h2 className="text-sm font-bold leading-tight">
 
                                 {
                                   patient.patientid.name
@@ -338,7 +338,7 @@ export const DoctorDashboard = () => {
 
                               </h2>
 
-                              <p className="text-gray-500 mt-1">
+                              <p className="text-gray-500 text-xs mt-0.5">
 
                                 User ID:
                                 {" "}
@@ -351,7 +351,7 @@ export const DoctorDashboard = () => {
                             </div>
 
                             <span
-                              className={`px-5 py-2 rounded-full font-semibold capitalize ${patient.status === "approved"
+                              className={`px-3 py-1 rounded-full text-xs font-semibold capitalize ${patient.status === "approved"
 
                                   ?
 
@@ -391,17 +391,17 @@ export const DoctorDashboard = () => {
 
                     (
 
-                      <div className="flex flex-col items-center justify-center py-24">
+                      <div className="flex flex-col items-center justify-center py-16">
 
-                        <div className="text-7xl mb-5">
+                        <div className="text-5xl mb-3">
                           📭
                         </div>
 
-                        <h2 className="text-3xl font-bold">
+                        <h2 className="text-xl font-bold">
                           No Requests Sent
                         </h2>
 
-                        <p className="text-gray-500 mt-3 text-center">
+                        <p className="text-gray-500 mt-1 text-sm text-center">
                           You haven't sent any patient access requests yet.
                         </p>
 
@@ -411,7 +411,7 @@ export const DoctorDashboard = () => {
                               "dashboard"
                             )
                           }}
-                          className="mt-8 bg-blue-600 text-white px-8 py-3 rounded-2xl hover:bg-blue-700"
+                          className="mt-5 bg-blue-600 text-white text-sm px-6 py-2.5 rounded-xl hover:bg-blue-700"
                         >
 
                           Search Patient
