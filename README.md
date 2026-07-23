@@ -95,7 +95,7 @@ Register → Login → Search Patient → Send Request → Access Approved Recor
 * Protected routes
 * Backend token verification
 * Role-based authorization
-* Secure record access workflow
+* Secured record access workflow
 
 ---
 
