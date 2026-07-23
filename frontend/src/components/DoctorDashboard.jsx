@@ -299,7 +299,7 @@ export const DoctorDashboard = () => {
 
                 </div>
 
-                <div className="bg-white rounded-3xl shadow-xl p-10 w-162.5 max-w-[90%]">
+                <div className="bg-white rounded-3xl shadow-xl p-10 w-162.5 max-w-[90%] mb-8">
 
                   <h2 className="text-2xl font-semibold text-center mb-6">
 
@@ -360,6 +360,84 @@ export const DoctorDashboard = () => {
                     </div>
 
                   )}
+
+                </div>
+
+                <div className="bg-white rounded-3xl shadow-xl p-10 w-162.5 max-w-[90%]">
+
+                  <h2 className="text-2xl font-semibold text-center mb-8">
+
+                    What You Can Do
+
+                  </h2>
+
+                  <div className="grid grid-cols-2 gap-5">
+
+                    <div className="bg-blue-50 rounded-2xl p-5">
+
+                      <div className="text-3xl mb-3">
+                        🔍
+                      </div>
+
+                      <h3 className="font-bold mb-1">
+                        Search Patients
+                      </h3>
+
+                      <p className="text-sm text-gray-500">
+                        Find a patient using their unique User ID.
+                      </p>
+
+                    </div>
+
+                    <div className="bg-blue-50 rounded-2xl p-5">
+
+                      <div className="text-3xl mb-3">
+                        📨
+                      </div>
+
+                      <h3 className="font-bold mb-1">
+                        Request Access
+                      </h3>
+
+                      <p className="text-sm text-gray-500">
+                        Send a request to view a patient's health records.
+                      </p>
+
+                    </div>
+
+                    <div className="bg-blue-50 rounded-2xl p-5">
+
+                      <div className="text-3xl mb-3">
+                        📁
+                      </div>
+
+                      <h3 className="font-bold mb-1">
+                        View Records
+                      </h3>
+
+                      <p className="text-sm text-gray-500">
+                        Once approved, securely access uploaded records.
+                      </p>
+
+                    </div>
+
+                    <div className="bg-blue-50 rounded-2xl p-5">
+
+                      <div className="text-3xl mb-3">
+                        📊
+                      </div>
+
+                      <h3 className="font-bold mb-1">
+                        Track Requests
+                      </h3>
+
+                      <p className="text-sm text-gray-500">
+                        See which requests are approved, pending, or rejected.
+                      </p>
+
+                    </div>
+
+                  </div>
 
                 </div>
 
