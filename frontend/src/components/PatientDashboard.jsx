@@ -280,7 +280,7 @@ export const PatientDashboard = () => {
 
         {showRequests && (
 
-          <div className="bg-white rounded-3xl p-8 shadow">
+          <div className="bg-white rounded-3xl p-8 shadow mb-10">
 
             <div className="flex items-center justify-between mb-8">
 
@@ -437,6 +437,34 @@ ${request.status === "approved"
           </div>
 
         )}
+
+        <div className="bg-white rounded-3xl p-10 shadow">
+
+          <h2 className="text-2xl font-bold mb-5">
+            About This Project
+          </h2>
+
+          <p className="text-gray-600 leading-8">
+
+            This MERN based E-Healthcare Record Management System
+            focuses on secure and controlled access to medical data.
+
+            Patients upload and manage records while doctors
+            request permission before accessing information.
+
+            Authentication details are protected using token based
+            authorization stored securely through cookies,
+            ensuring user privacy and controlled access.
+
+          </p>
+
+          <p className="mt-6 text-sm text-gray-400 tracking-wide">
+
+            Built using MERN Stack • React • Node • Express • MongoDB • JWT • ImageKit
+
+          </p>
+
+        </div>
 
       </div>
 
