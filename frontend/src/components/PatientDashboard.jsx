@@ -196,68 +196,80 @@ export const PatientDashboard = () => {
 
   return (
 
-    <div className="min-h-screen bg-slate-100 p-6">
+    <div className="min-h-screen bg-sky-500 p-6">
 
-      <div className="bg-white rounded-3xl shadow-xl ring-1 ring-slate-900/5 min-h-[92vh] p-10">
+      <div className="bg-stone-50 rounded-3xl shadow-2xl min-h-[92vh] p-10">
 
-        <div className="bg-gradient-to-br flex flex-col from-teal-700 via-teal-600 to-slate-800 rounded-3xl p-10 text-white mb-10 items-center justify-center text-center shadow-lg">
+        <div className="flex justify-between items-center mb-10 px-2">
 
-          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-teal-200 mb-3">
-            Patient Portal
+          <div className="text-3xl font-bold text-gray-800">
+            Medi<span className="text-blue-600">Care</span>
+          </div>
+
+          <div className="text-sm text-gray-500">
+            Patient Dashboard
+          </div>
+
+        </div>
+
+        <div className="bg-white rounded-3xl p-12 shadow mb-10 flex flex-col items-center text-center">
+
+          <span className="text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4">
+            Welcome Back
           </span>
 
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            Welcome back, {User.name}
+          <h1 className="text-5xl font-bold text-gray-800">
+            {User.name}
           </h1>
 
-          <p className="mt-4 text-base md:text-lg text-teal-50/80 max-w-xl">
+          <p className="mt-5 text-lg text-gray-600 max-w-xl">
             Manage your healthcare records and control doctor access.
           </p>
 
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-10">
+        <div className="grid md:grid-cols-2 gap-8 mb-10">
 
-          <div className="bg-white rounded-2xl p-8 shadow-sm ring-1 ring-slate-200 hover:shadow-md hover:ring-teal-200 transition-all duration-200">
+          <div className="bg-white rounded-3xl p-8 shadow hover:shadow-lg transition">
 
-            <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-teal-50 text-2xl mb-6">
+            <div className="text-5xl mb-5">
               📁
             </div>
 
-            <h2 className="text-xl font-bold text-slate-900 mb-2">
+            <h2 className="text-2xl font-bold mb-4">
               Your Health Records
             </h2>
 
-            <p className="text-slate-500 text-sm leading-relaxed mb-8">
+            <p className="text-gray-500 mb-8">
               Access, upload and manage all healthcare records securely.
             </p>
 
             <button
               onClick={getrecords}
-              className="bg-teal-700 text-white px-6 py-2.5 rounded-xl font-medium text-sm hover:bg-teal-800 active:scale-[0.98] transition-all duration-150"
+              className="bg-blue-600 text-white px-8 py-3 rounded-2xl hover:bg-blue-700 transition"
             >
               View Records
             </button>
 
           </div>
 
-          <div className="bg-white rounded-2xl p-8 shadow-sm ring-1 ring-slate-200 hover:shadow-md hover:ring-slate-300 transition-all duration-200">
+          <div className="bg-white rounded-3xl p-8 shadow hover:shadow-lg transition">
 
-            <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-slate-100 text-2xl mb-6">
+            <div className="text-5xl mb-5">
               🩺
             </div>
 
-            <h2 className="text-xl font-bold text-slate-900 mb-2">
+            <h2 className="text-2xl font-bold mb-4">
               Doctor Permissions
             </h2>
 
-            <p className="text-slate-500 text-sm leading-relaxed mb-8">
+            <p className="text-gray-500 mb-8">
               Approve or revoke doctor access requests.
             </p>
 
             <button
               onClick={permissionhandle}
-              className="bg-slate-800 text-white px-6 py-2.5 rounded-xl font-medium text-sm hover:bg-slate-900 active:scale-[0.98] transition-all duration-150"
+              className="bg-blue-600 text-white px-8 py-3 rounded-2xl hover:bg-blue-700 transition"
             >
               {showRequests ? "Hide Requests" : "Manage Permissions"}
             </button>
@@ -268,15 +280,15 @@ export const PatientDashboard = () => {
 
         {showRequests && (
 
-          <div className="bg-white rounded-2xl p-8 shadow-sm ring-1 ring-slate-200">
+          <div className="bg-white rounded-3xl p-8 shadow">
 
-            <div className="flex items-center justify-between mb-8 pb-6 border-b border-slate-100">
+            <div className="flex items-center justify-between mb-8">
 
-              <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
+              <h2 className="text-3xl font-bold">
                 Permission Requests
               </h2>
 
-              <div className="bg-teal-50 text-teal-800 text-sm font-semibold px-4 py-1.5 rounded-full">
+              <div className="bg-blue-50 text-blue-700 px-5 py-2 rounded-full font-semibold">
                 {gotrequests.length} {gotrequests.length === 1 ? "Request" : "Requests"}
               </div>
 
@@ -286,15 +298,15 @@ export const PatientDashboard = () => {
 
               <div className="text-center py-20">
 
-                <div className="text-6xl mb-5 opacity-80">
+                <div className="text-7xl mb-5">
                   📭
                 </div>
 
-                <h3 className="text-2xl font-bold text-slate-900">
+                <h3 className="text-3xl font-bold">
                   No Requests
                 </h3>
 
-                <p className="text-slate-500 mt-2 text-sm">
+                <p className="text-gray-500 mt-3">
                   Doctor requests will appear here
                 </p>
 
@@ -302,45 +314,37 @@ export const PatientDashboard = () => {
 
             ) : (
 
-              <div className="grid gap-4">
+              <div className="grid gap-5">
 
                 {gotrequests.map((request, index) => (
 
                   <div
                     key={index}
-                    className="bg-slate-50 rounded-2xl border border-slate-200 p-6 hover:border-slate-300 hover:bg-slate-50/70 transition-all duration-150"
+                    className="bg-blue-50 rounded-3xl border border-blue-100 p-6 hover:shadow-lg transition"
                   >
 
-                    <div className="flex justify-between items-center gap-4 flex-wrap">
+                    <div className="flex justify-between items-center">
 
                       <div>
 
-                        <h3 className="text-lg font-bold text-slate-900">
+                        <h3 className="text-2xl font-bold">
                           Dr. {request.doctorid.name}
                         </h3>
 
                         <div
-                          className={`mt-3 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold capitalize
+                          className={`mt-4 inline-flex px-5 py-2 rounded-full font-semibold capitalize
 
 ${request.status === "approved"
-                              ? "bg-emerald-100 text-emerald-700"
+                              ? "bg-green-100 text-green-700"
 
                               : request.status === "pending"
-                                ? "bg-amber-100 text-amber-700"
+                                ? "bg-yellow-100 text-yellow-700"
 
-                                : "bg-rose-100 text-rose-700"
+                                : "bg-red-100 text-red-700"
                             }
 
 `}
                         >
-
-                          <span className={`w-1.5 h-1.5 rounded-full ${
-                            request.status === "approved"
-                              ? "bg-emerald-500"
-                              : request.status === "pending"
-                                ? "bg-amber-500"
-                                : "bg-rose-500"
-                          }`} />
 
                           {request.status}
 
@@ -348,7 +352,7 @@ ${request.status === "approved"
 
                       </div>
 
-                      <div className="flex gap-2.5">
+                      <div className="flex gap-3">
 
                         {request.status === "pending" && (
 
@@ -358,7 +362,7 @@ ${request.status === "approved"
                                 request.doctorid._id
                               )
                             }
-                            className="bg-teal-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-teal-800 active:scale-[0.98] transition-all duration-150"
+                            className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700"
                           >
 
                             Allow
@@ -375,7 +379,7 @@ ${request.status === "approved"
                                 request.doctorid._id
                               )
                             }
-                            className="bg-amber-500 text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-amber-600 active:scale-[0.98] transition-all duration-150"
+                            className="bg-yellow-500 text-white px-6 py-3 rounded-xl hover:bg-yellow-600"
                           >
 
                             Revoke
@@ -394,7 +398,7 @@ ${request.status === "approved"
                                   request.doctorid._id
                                 )
                               }
-                              className="bg-teal-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-teal-800 active:scale-[0.98] transition-all duration-150"
+                              className="bg-green-600 text-white px-6 py-3 rounded-xl hover:bg-green-700"
                             >
 
                               Allow
@@ -407,7 +411,7 @@ ${request.status === "approved"
                                   request.doctorid._id
                                 )
                               }
-                              className="bg-white text-rose-600 border border-rose-200 px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-rose-50 active:scale-[0.98] transition-all duration-150"
+                              className="bg-red-600 text-white px-6 py-3 rounded-xl hover:bg-red-700"
                             >
 
                               Delete
